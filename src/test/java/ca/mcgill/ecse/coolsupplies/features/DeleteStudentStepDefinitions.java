@@ -1,10 +1,28 @@
 package ca.mcgill.ecse.coolsupplies.features;
 
+import ca.mcgill.ecse.coolsupplies.application.CoolSuppliesApplication;
+import ca.mcgill.ecse.coolsupplies.model.CoolSupplies;
+import ca.mcgill.ecse.coolsupplies.model.Grade;
+import ca.mcgill.ecse.coolsupplies.model.Student;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.jupiter.api.BeforeAll;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class DeleteStudentStepDefinitions {
+
+  private static CoolSupplies coolSupplies;
+  private List<Grade> gradeList = new ArrayList<>();
+  private List<Student> studentList = new ArrayList<>();
+  @BeforeAll
+  public static void initializeCoolSupplies(){
+    // Before all tests, initialize coolSupplies
+    coolSupplies = CoolSuppliesApplication.getCoolSupplies();
+  }
   @Given("the following grade entities exists in the system \\(p5)")
   public void the_following_grade_entities_exists_in_the_system_p5(
       io.cucumber.datatable.DataTable dataTable) {
@@ -15,7 +33,13 @@ public class DeleteStudentStepDefinitions {
     // Double, Byte, Short, Long, BigInteger or BigDecimal.
     //
     // For other transformations you can register a DataTableType.
-    throw new io.cucumber.java.PendingException();
+    gradeList = new ArrayList<>(); // Reinitialize grades list every scenario
+    List<String> gradeTable = dataTable.asList(String.class); // Get datatable as a list of Strings
+    for (String gradeLevel: gradeTable){
+      gradeList.add(new Grade(gradeLevel, coolSupplies));
+    }
+
+    //throw new io.cucumber.java.PendingException();
   }
 
   @Given("the following student entities exists in the system \\(p5)")
@@ -28,7 +52,17 @@ public class DeleteStudentStepDefinitions {
     // Double, Byte, Short, Long, BigInteger or BigDecimal.
     //
     // For other transformations you can register a DataTableType.
-    throw new io.cucumber.java.PendingException();
+    studentList = new ArrayList<>(); // Reinitialize students list every scenario
+    List<Map<String, String>> studentTable = dataTable.asMaps(String.class, String.class);
+    for (Map<String, String> student : studentTable){
+      for (Grade grade : gradeList){
+        if (grade.getLevel().equals(student.get("gradeLevel"))){
+          studentList.add(new Student(student.get("name"), coolSupplies, grade));
+          break;
+        }
+      }
+    }
+    //throw new io.cucumber.java.PendingException();
   }
 
   @When("the school admin attempts to delete from the system the student with name {string} \\(p5)")
