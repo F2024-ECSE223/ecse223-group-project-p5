@@ -15,14 +15,16 @@ import java.util.Map;
 
 public class DeleteStudentStepDefinitions {
 
-  private static CoolSupplies coolSupplies;
-  private List<Grade> gradeList = new ArrayList<>();
-  private List<Student> studentList = new ArrayList<>();
-  @BeforeAll
-  public static void initializeCoolSupplies(){
-    // Before all tests, initialize coolSupplies
-    coolSupplies = CoolSuppliesApplication.getCoolSupplies();
-  }
+  private CoolSupplies coolSupplies;
+  private String error;
+  private int errorCntr;
+//  private List<Grade> gradeList = new ArrayList<>();
+//  private List<Student> studentList = new ArrayList<>();
+//  @BeforeAll
+//  public static void initializeCoolSupplies(){
+//    // Before all tests, initialize coolSupplies
+//    coolSupplies = CoolSuppliesApplication.getCoolSupplies();
+//  }
 
   /**
    * @author Doddy Yang Qiu
@@ -37,10 +39,10 @@ public class DeleteStudentStepDefinitions {
     // Double, Byte, Short, Long, BigInteger or BigDecimal.
     //
     // For other transformations you can register a DataTableType.
-    gradeList = new ArrayList<>(); // Reinitialize grades list every scenario
-    List<String> gradeTable = dataTable.asList(String.class); // Get datatable as a list of Strings
-    for (String gradeLevel: gradeTable){
-      gradeList.add(new Grade(gradeLevel, coolSupplies));
+    List<Map<String, String>> rows = dataTable.asMaps(); // Get datatable as a list of Strings
+    for (var row: rows){
+      String gradeLevel=row.get("level");
+      coolSupplies.addGrade(gradeLevel);
     }
 
     //throw new io.cucumber.java.PendingException();
@@ -59,17 +61,17 @@ public class DeleteStudentStepDefinitions {
     // Double, Byte, Short, Long, BigInteger or BigDecimal.
     //
     // For other transformations you can register a DataTableType.
-    studentList = new ArrayList<>(); // Reinitialize students list every scenario
-    List<Map<String, String>> studentTable = dataTable.asMaps(String.class, String.class);
-    for (Map<String, String> student : studentTable){
-      for (Grade grade : gradeList){
-        if (grade.getLevel().equals(student.get("gradeLevel"))){
-          studentList.add(new Student(student.get("name"), coolSupplies, grade));
+    List<Map<String, String>> studentTable = dataTable.asMaps();
+    for (var student : studentTable){
+      String name=student.get("name");
+      String gradeLevel=student.get("gradeLevel");
+      for (Grade grade : coolSupplies.getGrades()){
+        if (grade.getLevel().equals(gradeLevel)){
+          coolSupplies.addStudent(name, grade);
           break;
         }
       }
     }
-    //throw new io.cucumber.java.PendingException();
   }
 
   @When("the school admin attempts to delete from the system the student with name {string} \\(p5)")
