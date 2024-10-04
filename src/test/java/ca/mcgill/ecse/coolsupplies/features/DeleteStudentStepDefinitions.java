@@ -23,6 +23,10 @@ public class DeleteStudentStepDefinitions {
     // Before all tests, initialize coolSupplies
     coolSupplies = CoolSuppliesApplication.getCoolSupplies();
   }
+
+  /**
+   * @author Doddy Yang Qiu
+   */
   @Given("the following grade entities exists in the system \\(p5)")
   public void the_following_grade_entities_exists_in_the_system_p5(
       io.cucumber.datatable.DataTable dataTable) {
@@ -42,6 +46,9 @@ public class DeleteStudentStepDefinitions {
     //throw new io.cucumber.java.PendingException();
   }
 
+  /**
+   * @author Doddy Yang Qiu
+   */
   @Given("the following student entities exists in the system \\(p5)")
   public void the_following_student_entities_exists_in_the_system_p5(
       io.cucumber.datatable.DataTable dataTable) {
