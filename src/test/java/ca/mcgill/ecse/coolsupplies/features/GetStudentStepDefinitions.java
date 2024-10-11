@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 public class GetStudentStepDefinitions {
   private CoolSupplies coolSupplies=CoolSuppliesApplication.getCoolSupplies();
   private TOStudent student;
-  private List<TOStudent> students;
+//  private List<TOStudent> students;
 
   /**
    * @author Brian Yang
@@ -28,7 +28,7 @@ public class GetStudentStepDefinitions {
   public void the_school_admin_attempts_to_get_from_the_system_the_student_with_name_p5(
       String string) {
     // Write code here that turns the phrase above into concrete actions
-    student = CoolSuppliesFeatureSet2Controller.getStudent(string);
+    student=CoolSuppliesFeatureSet2Controller.getStudent(string);
   }
 
   /**
@@ -37,7 +37,7 @@ public class GetStudentStepDefinitions {
   @When("the school admin attempts to get from the system all the students \\(p5)")
   public void the_school_admin_attempts_to_get_from_the_system_all_the_students_p5() {
     // Write code here that turns the phrase above into concrete actions
-    students=CoolSuppliesFeatureSet2Controller.getStudents();
+    CoolSuppliesFeatureSet2Controller.getStudents();
   }
 
   /**
@@ -57,10 +57,10 @@ public class GetStudentStepDefinitions {
     for (var row : rows) {
       String name = row.get("name");
       String gradeLevel = row.get("gradeLevel");
-      for (TOStudent student : students) {
+      for (Student student : coolSupplies.getStudents()) {
         if (student.getName().equals(name)) {
           assertEquals(name, student.getName());
-          assertEquals(gradeLevel, student.getGradeLevel());
+          assertEquals(gradeLevel, student.getGrade().getLevel());
         }
       }
     }
