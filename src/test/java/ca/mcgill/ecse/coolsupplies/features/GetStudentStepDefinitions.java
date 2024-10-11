@@ -37,7 +37,7 @@ public class GetStudentStepDefinitions {
   @When("the school admin attempts to get from the system all the students \\(p5)")
   public void the_school_admin_attempts_to_get_from_the_system_all_the_students_p5() {
     // Write code here that turns the phrase above into concrete actions
-    CoolSuppliesFeatureSet2Controller.getStudents();
+    students=CoolSuppliesFeatureSet2Controller.getStudents();
   }
 
   /**
