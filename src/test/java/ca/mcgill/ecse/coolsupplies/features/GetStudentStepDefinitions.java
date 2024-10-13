@@ -29,7 +29,8 @@ public class GetStudentStepDefinitions {
       String string) {
     TOStudent student = CoolSuppliesFeatureSet2Controller.getStudent(string);
     studentList=new ArrayList<TOStudent>();
-    studentList.add(student);
+    if (student != null) {
+      studentList.add(student);}
   }
 
   /**
@@ -69,7 +70,6 @@ public class GetStudentStepDefinitions {
     assertTrue(studentList.isEmpty(), 
     "Expected no student entities, but the list is not empty.");
   }
-
 
 
 }
