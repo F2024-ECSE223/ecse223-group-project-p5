@@ -70,7 +70,7 @@ public class DeleteStudentStepDefinitions {
   @Then("the number of student entities in the system shall be {string} \\(p5)")
   public void the_number_of_student_entities_in_the_system_shall_be_p5(String numOfStudent) {
     int number = Integer.parseInt(numOfStudent);
-    assertEquals(number, "" + coolSupplies.getStudents().size());
+    assertEquals(number, coolSupplies.getStudents().size());
   }
 
   /**
