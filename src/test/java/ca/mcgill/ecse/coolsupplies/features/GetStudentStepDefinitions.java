@@ -9,6 +9,7 @@ import ca.mcgill.ecse.coolsupplies.model.CoolSupplies;
 import ca.mcgill.ecse.coolsupplies.model.Grade;
 import ca.mcgill.ecse.coolsupplies.model.Student;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -18,7 +19,6 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 public class GetStudentStepDefinitions {
   private CoolSupplies coolSupplies=CoolSuppliesApplication.getCoolSupplies();
-  private TOStudent student;
   private List<TOStudent> studentList;
 
   /**
@@ -27,7 +27,9 @@ public class GetStudentStepDefinitions {
   @When("the school admin attempts to get from the system the student with name {string} \\(p5)")
   public void the_school_admin_attempts_to_get_from_the_system_the_student_with_name_p5(
       String string) {
-    student = CoolSuppliesFeatureSet2Controller.getStudent(string);
+    TOStudent student = CoolSuppliesFeatureSet2Controller.getStudent(string);
+    studentList=new ArrayList<TOStudent>();
+    studentList.add(student);
   }
 
   /**
