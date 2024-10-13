@@ -87,9 +87,7 @@ public class DeleteStudentStepDefinitions {
       Student student = Student.getWithName(name);
 
       if (student != null && gradeLevel != null) {
-        for (Student studentX : coolSupplies.getStudents()) {
-          assertEquals(gradeLevel, studentX.getGrade().getLevel());
-        }
+        assertEquals(gradeLevel,student.getGrade().getLevel());
       }
     }
   }
