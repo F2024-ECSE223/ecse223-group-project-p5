@@ -7,8 +7,6 @@ import ca.mcgill.ecse.coolsupplies.model.CoolSupplies;
 import ca.mcgill.ecse.coolsupplies.model.InventoryItem;
 import ca.mcgill.ecse.coolsupplies.persistence.CoolsuppliesPersistence;
 import ca.mcgill.ecse.coolsupplies.model.Order;
-import ca.mcgill.ecse.coolsupplies.model.Order.Status;
-import ca.mcgill.ecse.coolsupplies.model.OrderItem;
 
 public class CoolSuppliesFeatureSet9Controller {
   private static CoolSupplies coolSupplies = CoolSuppliesApplication.getCoolSupplies();
