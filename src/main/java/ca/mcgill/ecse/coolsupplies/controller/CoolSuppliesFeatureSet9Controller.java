@@ -15,6 +15,15 @@ public class CoolSuppliesFeatureSet9Controller {
 
   private CoolSuppliesFeatureSet9Controller() {}
 
+/*
+ * The updateOrderItem method updates the quantity of an item in an order
+ * 
+ * @author        Sanad Abu Baker
+ * @param         itemName a string indicating the name of the item that the user wants to update.
+ * @param         newQuantity an int indicating the intended updated quantity of the item.
+ * @param         orderNumber an int used to find the corresponding order in the system.
+ * @return an error message if any of the inputs are invalid, an empty string indicating success otherwise.
+ */
   public static String updateOrderItem(String itemName, int newQuantity, int orderNumber) {
 
     Order order = Order.getWithNumber(orderNumber);
@@ -47,7 +56,14 @@ public class CoolSuppliesFeatureSet9Controller {
     }
     return "";
   }
-
+  /*
+  * The deleteOrderItem method deletes an item from an order.
+  * 
+  * @author        Sanad Abu Baker
+  * @param         itemName a string indicating the name of the item that the user wants to delete.
+  * @param         orderNumber an int used to find the corresponding order in the system.
+  * @return an error message if any of the inputs are invalid, an empty string indicating success otherwise.
+  */
   public static String deleteOrderItem(String itemName, int orderNumber) {
 
     Order order = Order.getWithNumber(orderNumber);
@@ -71,7 +87,6 @@ public class CoolSuppliesFeatureSet9Controller {
     if (orderItem == null) {
       return "Item " + itemName + " does not exist in the order " + orderNumber + ".";
     }
-
 
     try {
       orderItem.delete();
