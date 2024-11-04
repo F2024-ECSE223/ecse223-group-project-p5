@@ -36,26 +36,15 @@ public class CoolSuppliesFeatureSet9Controller {
       return "Item " + itemName + " does not exist.";
     }
 
-    OrderItem orderItem = null;
-    for (OrderItem oi : order.getOrderItems()) {
-      if (oi.getItem().getName().equals(itemName)) {
-        orderItem = oi;
-        break;
-      }
-    }
-
-    if (orderItem == null) {
-      return "Item " + itemName + " does not exist in the order " + orderNumber + ".";
-    }
-
     try {
-      orderItem.setQuantity(newQuantity);
+      order.updateOrderItemQuantity(inventoryItem, newQuantity);
       CoolsuppliesPersistence.save();
     } catch (RuntimeException e) {
       return e.getMessage();
     }
     return "";
   }
+
   /*
   * The deleteOrderItem method deletes an item from an order.
   * 
@@ -76,20 +65,8 @@ public class CoolSuppliesFeatureSet9Controller {
       return "Item " + itemName + " does not exist.";
     }
 
-    OrderItem orderItem = null;
-    for (OrderItem oi : order.getOrderItems()) {
-      if (oi.getItem().getName().equals(itemName)) {
-        orderItem = oi;
-        break;
-      }
-    }
-
-    if (orderItem == null) {
-      return "Item " + itemName + " does not exist in the order " + orderNumber + ".";
-    }
-
     try {
-      orderItem.delete();
+      order.deleteItemOfOrder(inventoryItem);
       CoolsuppliesPersistence.save();
     } catch (RuntimeException e) {
       return e.getMessage();
