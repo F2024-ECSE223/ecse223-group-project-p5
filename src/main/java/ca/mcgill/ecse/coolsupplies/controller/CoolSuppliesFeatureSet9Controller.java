@@ -22,9 +22,9 @@ public class CoolSuppliesFeatureSet9Controller {
  * @param         orderNumber an int used to find the corresponding order in the system.
  * @return an error message if any of the inputs are invalid, an empty string indicating success otherwise.
  */
-  public static String updateOrderItem(String itemName, int newQuantity, int orderNumber) {
+  public static String updateOrderItem(String itemName, String newQuantity, String orderNumber) {
 
-    Order order = Order.getWithNumber(orderNumber);
+    Order order = Order.getWithNumber(Integer.parseInt(orderNumber));
     if (order == null) {
       return "Order " + orderNumber + " does not exist";
     }
@@ -35,7 +35,7 @@ public class CoolSuppliesFeatureSet9Controller {
     }
 
     try {
-      order.updateOrderItemQuantity(inventoryItem, newQuantity);
+      order.updateOrderItemQuantity(inventoryItem, Integer.parseInt(newQuantity));
       CoolsuppliesPersistence.save();
     } catch (RuntimeException e) {
       return e.getMessage();
@@ -51,9 +51,9 @@ public class CoolSuppliesFeatureSet9Controller {
   * @param         orderNumber an int used to find the corresponding order in the system.
   * @return an error message if any of the inputs are invalid, an empty string indicating success otherwise.
   */
-  public static String deleteOrderItem(String itemName, int orderNumber) {
+  public static String deleteOrderItem(String itemName, String orderNumber) {
 
-    Order order = Order.getWithNumber(orderNumber);
+    Order order = Order.getWithNumber(Integer.parseInt(orderNumber));
     if (order == null) {
       return "Order " + orderNumber + " does not exist";
     }
