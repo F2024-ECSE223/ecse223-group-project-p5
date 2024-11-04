@@ -1,10 +1,20 @@
 package ca.mcgill.ecse.coolsupplies.features;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import ca.mcgill.ecse.coolsupplies.application.CoolSuppliesApplication;
+import ca.mcgill.ecse.coolsupplies.model.*;
+import ca.mcgill.ecse.coolsupplies.model.Order.Status;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class OrderStepDefinitions {
+  private CoolSupplies coolSupplies=CoolSuppliesApplication.getCoolSupplies();
+  private String error;
+
   @Given("the following parent entities exist in the system")
   public void the_following_parent_entities_exist_in_the_system(
       io.cucumber.datatable.DataTable dataTable) {
@@ -214,11 +224,14 @@ public class OrderStepDefinitions {
     throw new io.cucumber.java.PendingException();
   }
 
-
+  /**
+   * @author Baptiste Didier
+   */
   @Then("the order {string} shall not contain authorization code {string}")
-  public void the_order_shall_not_contain_authorization_code(String string, String string2) {
-    // Write code here that turns the phrase above into concrete actions
-    // throw new io.cucumbser.java.PendingException();
+  public void the_order_shall_not_contain_authorization_code(String orderNum, String authorizationCode) {
+    Order order = Order.getWithNumber(Integer.parseInt(orderNum));
+    boolean hasAuthorizationCode = order.getAuthorizationCode().equals(authorizationCode);
+    assertFalse(hasAuthorizationCode);
   }
 
   @Then("the order {string} shall not exist in the system")
@@ -227,10 +240,14 @@ public class OrderStepDefinitions {
     throw new io.cucumber.java.PendingException();
   }
 
+  /**
+   * @author Baptiste Didier
+   */
   @Then("the order {string} shall contain authorization code {string}")
-  public void the_order_shall_contain_authorization_code(String string, String string2) {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
+  public void the_order_shall_contain_authorization_code(String orderNum, String authorizationCode) {
+    Order order = Order.getWithNumber(Integer.parseInt(orderNum));
+    boolean hasAuthorizationCode = order.getAuthorizationCode().equals(authorizationCode);
+    assertTrue(hasAuthorizationCode);
   }
 
   @Then("the order {string} shall contain {string} item")
@@ -239,10 +256,16 @@ public class OrderStepDefinitions {
     throw new io.cucumber.java.PendingException();
   }
 
+  /**
+   * @author Baptiste Didier
+   */
   @Then("the order {string} shall not contain {string}")
-  public void the_order_shall_not_contain(String string, String string2) {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
+  public void the_order_shall_not_contain(String orderNum, String itemName) {
+    Order order = Order.getWithNumber(Integer.parseInt(orderNum));
+    Item item = (Item) InventoryItem.getWithName(itemName);
+    for (OrderItem orderItem : order.getOrderItems()) {
+      assertFalse(orderItem.getItem().equals(item));
+    }
   }
 
 
@@ -259,11 +282,19 @@ public class OrderStepDefinitions {
     throw new io.cucumber.java.PendingException();
   }
 
+  /**
+   * @author Baptiste Didier
+   */
   @Then("the order {string} shall not contain {string} with quantity {string}")
-  public void the_order_shall_not_contain_with_quantity(String string, String string2,
-      String string3) {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
+  public void the_order_shall_not_contain_with_quantity(String orderNum, String itemName, String quantity) {
+    Order order = Order.getWithNumber(Integer.parseInt(orderNum));
+    Item item = (Item) InventoryItem.getWithName(itemName);
+    int number = Integer.parseInt(quantity);
+    for (OrderItem orderItem : order.getOrderItems()) {
+      if (orderItem.getItem().equals(item)) {
+        assertNotEquals(orderItem.getQuantity(), number);
+      }
+    }
   }
 
 
@@ -273,11 +304,14 @@ public class OrderStepDefinitions {
     throw new io.cucumber.java.PendingException();
   }
 
-
+  /**
+   * @author Baptiste Didier
+   */
   @Then("the order {string} shall be marked as {string}")
-  public void the_order_shall_be_marked_as(String string, String string2) {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
+  public void the_order_shall_be_marked_as(String orderNum, String statusName) {
+    Order order = Order.getWithNumber(Integer.parseInt(orderNum));
+    Status status = Order.Status.valueOf(statusName);
+    assertEquals(order.getStatus(), status);
   }
 
 
@@ -300,10 +334,13 @@ public class OrderStepDefinitions {
     throw new io.cucumber.java.PendingException();
   }
 
+  /**
+   * @author Baptiste Didier
+   */
   @Then("the error {string} shall be raised")
-  public void the_error_shall_be_raised(String string) {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
+  public void the_error_shall_be_raised(String errorMessage) {
+    assertTrue(error.contains(errorMessage), "Expected error message '" 
+    + errorMessage + "' not found in: " + errorMessage);
   }
 
   @Then("the following order entities shall be presented")
