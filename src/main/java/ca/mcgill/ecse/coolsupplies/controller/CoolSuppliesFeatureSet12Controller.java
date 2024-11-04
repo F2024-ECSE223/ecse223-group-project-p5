@@ -32,13 +32,6 @@ public class CoolSuppliesFeatureSet12Controller {
 	  
 	  try {
 		  
-		  Status orderStatus = order.getStatus();
-		  
-		  //Check if current State permits the startSchoolYear method
-		  if ((orderStatus != Status.Paid) && (orderStatus != Status.Started)) {
-			  return "The school year has already been started";
-		  }
-		  
 		  //Start the school year
 		  order.startSchoolYear();
 		  CoolsuppliesPersistence.save();
@@ -67,22 +60,6 @@ public class CoolSuppliesFeatureSet12Controller {
 	  }
 	  
 	  try {
-		  
-		  Status orderStatus = order.getStatus();
-		  
-		  //Check if current State permits the pickUpOrder method
-		  if (orderStatus == Status.PickedUp) {
-			  return "The order is already picked up";
-		  }
-		  else if (orderStatus == Status.Started) {
-			  return "Cannot pickup a started order";
-		  }
-		  else if (orderStatus == Status.Paid) {
-			  return "Cannot pickup a paid order";
-		  }
-		  else if (orderStatus == Status.Penalized) {
-			  return "Cannot pickup a penalized order";
-		  }
 		  
 		  //Student picks up order
 		  order.pickUpOrder();
