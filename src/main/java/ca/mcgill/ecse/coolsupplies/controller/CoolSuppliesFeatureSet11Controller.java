@@ -77,7 +77,7 @@ public class CoolSuppliesFeatureSet11Controller {
     return new TOOrder(myOrder.getParent().getEmail(),
             myOrder.getStudent().getName(),
             myOrder.getStatus().name(),
-            String.valueOf(myOrder.getNumber()),
+            myOrder.getNumber(),
             myOrder.getDate(),
             String.valueOf(myOrder.getLevel()),
             myOrder.getAuthorizationCode(),
