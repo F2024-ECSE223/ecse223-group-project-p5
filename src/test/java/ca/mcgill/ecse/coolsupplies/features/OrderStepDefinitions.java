@@ -214,13 +214,7 @@ public class OrderStepDefinitions {
     throw new io.cucumber.java.PendingException();
   }
 
-<<<<<<< HEAD
-  /**
-   * @author Baptiste Didier
-   */
-=======
 
->>>>>>> parent of 9cd5a86 (completed step definitions)
   @Then("the order {string} shall not contain authorization code {string}")
   public void the_order_shall_not_contain_authorization_code(String string, String string2) {
     // Write code here that turns the phrase above into concrete actions
@@ -233,12 +227,6 @@ public class OrderStepDefinitions {
     throw new io.cucumber.java.PendingException();
   }
 
-<<<<<<< HEAD
-  /**
-   * @author Baptiste Didier
-   */
-=======
->>>>>>> parent of 9cd5a86 (completed step definitions)
   @Then("the order {string} shall contain authorization code {string}")
   public void the_order_shall_contain_authorization_code(String string, String string2) {
     // Write code here that turns the phrase above into concrete actions
@@ -251,12 +239,6 @@ public class OrderStepDefinitions {
     throw new io.cucumber.java.PendingException();
   }
 
-<<<<<<< HEAD
-  /**
-   * @author Baptiste Didier
-   */
-=======
->>>>>>> parent of 9cd5a86 (completed step definitions)
   @Then("the order {string} shall not contain {string}")
   public void the_order_shall_not_contain(String string, String string2) {
     // Write code here that turns the phrase above into concrete actions
@@ -277,12 +259,6 @@ public class OrderStepDefinitions {
     throw new io.cucumber.java.PendingException();
   }
 
-<<<<<<< HEAD
-  /**
-   * @author Baptiste Didier
-   */
-=======
->>>>>>> parent of 9cd5a86 (completed step definitions)
   @Then("the order {string} shall not contain {string} with quantity {string}")
   public void the_order_shall_not_contain_with_quantity(String string, String string2,
       String string3) {
@@ -297,13 +273,7 @@ public class OrderStepDefinitions {
     throw new io.cucumber.java.PendingException();
   }
 
-<<<<<<< HEAD
-  /**
-   * @author Baptiste Didier
-   */
-=======
 
->>>>>>> parent of 9cd5a86 (completed step definitions)
   @Then("the order {string} shall be marked as {string}")
   public void the_order_shall_be_marked_as(String string, String string2) {
     // Write code here that turns the phrase above into concrete actions
@@ -330,20 +300,10 @@ public class OrderStepDefinitions {
     throw new io.cucumber.java.PendingException();
   }
 
-<<<<<<< HEAD
-  /**
-   * @author Baptiste Didier
-   */
-  @Then("the error {string} shall be raised")
-  public void the_error_shall_be_raised(String errorMessage) {
-    assertTrue(error.contains(errorMessage), "Expected error message '" 
-    + errorMessage + "' not found in: " + error);
-=======
   @Then("the error {string} shall be raised")
   public void the_error_shall_be_raised(String string) {
     // Write code here that turns the phrase above into concrete actions
     throw new io.cucumber.java.PendingException();
->>>>>>> parent of 9cd5a86 (completed step definitions)
   }
 
   @Then("the following order entities shall be presented")
