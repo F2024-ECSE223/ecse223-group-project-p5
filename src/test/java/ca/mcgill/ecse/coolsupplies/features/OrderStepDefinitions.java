@@ -216,8 +216,6 @@ public class OrderStepDefinitions {
 
 <<<<<<< HEAD
   /**
-   * @param orderNum This string represents the number of the order
-   * @param authorizationCode This string represents an authorization code
    * @author Baptiste Didier
    */
 =======
@@ -237,8 +235,6 @@ public class OrderStepDefinitions {
 
 <<<<<<< HEAD
   /**
-   * @param orderNum This string represents the number of the order
-   * @param authorizationCode This string represents an authorization code
    * @author Baptiste Didier
    */
 =======
@@ -257,8 +253,6 @@ public class OrderStepDefinitions {
 
 <<<<<<< HEAD
   /**
-   * @param orderNum This string represents the number of the order
-   * @param itemName This string represents the name of an item
    * @author Baptiste Didier
    */
 =======
@@ -285,9 +279,6 @@ public class OrderStepDefinitions {
 
 <<<<<<< HEAD
   /**
-   * @param orderNum This string represents the number of the order
-   * @param itemName This string represents the name of an item
-   * @param quantity This string represents the quantity of the item
    * @author Baptiste Didier
    */
 =======
@@ -308,8 +299,6 @@ public class OrderStepDefinitions {
 
 <<<<<<< HEAD
   /**
-   * @param orderNum This string represents the number of the order
-   * @param statusName This string represents the status of the order
    * @author Baptiste Didier
    */
 =======
@@ -343,7 +332,6 @@ public class OrderStepDefinitions {
 
 <<<<<<< HEAD
   /**
-   * @param errorMessage The string represents the received error message 
    * @author Baptiste Didier
    */
   @Then("the error {string} shall be raised")
