@@ -352,7 +352,7 @@ public class OrderStepDefinitions {
   @Then("the error {string} shall be raised")
   public void the_error_shall_be_raised(String errorMessage) {
     assertTrue(error.contains(errorMessage), "Expected error message '" 
-    + errorMessage + "' not found in: " + errorMessage);
+    + errorMessage + "' not found in: " + error);
   }
 
   @Then("the following order entities shall be presented")
