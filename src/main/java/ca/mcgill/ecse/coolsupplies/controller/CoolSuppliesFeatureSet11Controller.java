@@ -74,6 +74,7 @@ public class CoolSuppliesFeatureSet11Controller {
                 0));
       }
     }
+    totalPrice = Math.floor(totalPrice * 100)/100;
     return new TOOrder(myOrder.getParent().getEmail(),
             myOrder.getStudent().getName(),
             myOrder.getStatus().name(),
