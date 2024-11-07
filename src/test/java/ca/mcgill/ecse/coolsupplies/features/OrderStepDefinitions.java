@@ -86,8 +86,6 @@ public class OrderStepDefinitions {
     }
   }
 
-  }
-
   @Given("the following grade bundle entities exist in the system")
   public void the_following_grade_bundle_entities_exist_in_the_system(
       io.cucumber.datatable.DataTable dataTable) {
@@ -134,8 +132,8 @@ public class OrderStepDefinitions {
       io.cucumber.datatable.DataTable dataTable) {
     List<Map<String, String>> rows = dataTable.asMaps();
 
-    for (Map<String, String> orderItems : rows) {
-        List<Order> orders = coolSupplies.getOrders();
+    for (Map<String, String> orderitems : rows) {
+        List<Order> orders = orders.getOrders();
         List<Item> items = coolSupplies.getItems();
 
         Order order = null;

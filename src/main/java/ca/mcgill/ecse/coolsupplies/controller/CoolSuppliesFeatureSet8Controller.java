@@ -66,6 +66,14 @@ public class CoolSuppliesFeatureSet8Controller {
     }
   }
 
+  /**
+   * Adds an item to an order
+   * @param item the item name
+   * @param quantity the quantity of the item
+   * @param orderNumber the order number
+   * @return an error message or "Order updated successfully."
+   * @author Jiaduo Xing
+   */
   public static String addOrderItem(String item, String quantity, String orderNumber) {
     if (item == null || item.isEmpty()) {
       return "Error: Item name is required.";
