@@ -63,6 +63,7 @@ public class CoolSuppliesFeatureSet8Controller {
     }
     try {
       anOrder.addItemToOrder(anitem, Integer.parseInt(quantity));
+      CoolsuppliesPersistence.save();
     } catch (Exception e) {
       if (e.getMessage().startsWith("Unable to create order item due to")){
         return "Item "+ item + " already exists in the order " + orderNumber + ".";
