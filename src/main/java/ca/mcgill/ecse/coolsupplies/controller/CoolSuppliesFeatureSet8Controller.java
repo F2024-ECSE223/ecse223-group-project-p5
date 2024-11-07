@@ -17,15 +17,21 @@ public class CoolSuppliesFeatureSet8Controller {
 
   private CoolSuppliesFeatureSet8Controller() {}
 
-  /**
-   * Updates an order in CoolSupplies.
-   * 
-   * @param orderNumber the order number
-   * @param purchaseLevel the purchase level of the order
-   * @param studentName the name of the student
-   * @return an error string if there is any
-   * @author Jiaduo Xing
-   */
+  
+/**
+ * Updates an existing order in the system with a new purchase level and a new student.
+ * 
+ * @param orderNumber the unique identifier of the order to be updated
+ * @param purchaseLevel the new purchase level to be set for the order
+ * @param studentName the name of the student to be associated with the order
+ * @return a string message indicating the result of the update operation:
+ *         - "Order {orderNumber} does not exist" if the order is not found
+ *         - "Student {studentName} does not exist" if the student is not found
+ *         - "Purchase level {purchaseLevel} does not exist" if the purchase level is invalid
+ *         - an error message if an exception occurs
+ *         - an empty string if the update is successful
+ * @author Jiaduo Xing
+ */
   public static String updateOrder(String orderNumber, String purchaseLevel, String studentName) {
     Order order = Order.getWithNumber(Integer.parseInt(orderNumber));
     if (order == null){
@@ -39,17 +45,22 @@ public class CoolSuppliesFeatureSet8Controller {
       order.updateOrder(PurchaseLevel.valueOf(purchaseLevel), student);
       CoolsuppliesPersistence.save();
     } catch (Exception e) {
+      if(e.getMessage().startsWith("No enum constant")){
+        return" Purchase level " + purchaseLevel +" does not exist ";
+      }
       return e.getMessage();
     }
     return "";
   }
 
+
   /**
-   * Adds an item to an order
-   * @param item the item name
+   * Adds an item to an order in CoolSupplies.
+   * 
+   * @param item the name of the item
    * @param quantity the quantity of the item
    * @param orderNumber the order number
-   * @return an error message or "Order updated successfully."
+   * @return an error string if there is any
    * @author Jiaduo Xing
    */
   public static String addOrderItem(String item, String quantity, String orderNumber) {
