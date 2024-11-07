@@ -2,8 +2,10 @@ package ca.mcgill.ecse.coolsupplies.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.print.attribute.standard.MediaSize.Other;
 import ca.mcgill.ecse.coolsupplies.application.CoolSuppliesApplication;
 import ca.mcgill.ecse.coolsupplies.model.CoolSupplies;
+import ca.mcgill.ecse.coolsupplies.model.InventoryItem;
 import ca.mcgill.ecse.coolsupplies.model.Item;
 import ca.mcgill.ecse.coolsupplies.model.Order;
 import ca.mcgill.ecse.coolsupplies.model.Student;
@@ -25,45 +27,21 @@ public class CoolSuppliesFeatureSet8Controller {
    * @author Jiaduo Xing
    */
   public static String updateOrder(String orderNumber, String purchaseLevel, String studentName) {
-    if (orderNumber == null || orderNumber.isEmpty()) {
-      return "Error: Order number is required.";
-    }
-    if (purchaseLevel == null || purchaseLevel.isEmpty()) {
-      return "Error: Purchase level is required.";
-    }
-    if (studentName == null || studentName.isEmpty()) {
-      return "Error: Student name is required.";
-    }
-    if (!purchaseLevel.equals("Mandatory") && !purchaseLevel.equals("Recommended")
-        && !purchaseLevel.equals("Optional")) {
-      return "Purchase level " + purchaseLevel + " does not exist.";
-    }
-
-    if (!Student.hasWithName(studentName)) {
-      return "Student " + studentName + " does not exist.";
-    }
-
-    if (!Order.hasWithNumber(Integer.parseInt(orderNumber))) {
+    Order order = Order.getWithNumber(Integer.parseInt(orderNumber));
+    if (order == null){
       return "Order " + orderNumber + " does not exist";
     }
-
+    Student student = Student.getWithName(studentName);
+    if (student == null){
+      return "Student" + studentName + "does not exist"; 
+    }
     try {
-      Order order = Order.getWithNumber(Integer.parseInt(orderNumber));
-      if (order.getStatus() != Order.Status.Started || order.getStatus() != Order.Status.Final) {
-        return "Cannot update a " + order.getStatus() + " order";
-      }
-      if (order.getParent().getEmail()
-          .equals(Student.getWithName(studentName).getParent().getEmail())) {
-        return "Student " + studentName + " is not a child of the parent "
-            + order.getParent().getEmail() + ".";
-      }
-      order.setLevel(PurchaseLevel.valueOf(purchaseLevel));
-      order.setStudent(Student.getWithName(studentName));
+      order.updateOrder(PurchaseLevel.valueOf(purchaseLevel), student);
       CoolsuppliesPersistence.save();
-      return "Order updated successfully.";
     } catch (Exception e) {
       return e.getMessage();
     }
+    return "";
   }
 
   /**
@@ -75,39 +53,22 @@ public class CoolSuppliesFeatureSet8Controller {
    * @author Jiaduo Xing
    */
   public static String addOrderItem(String item, String quantity, String orderNumber) {
-    if (item == null || item.isEmpty()) {
-      return "Error: Item name is required.";
-    }
-    if (quantity == null || quantity.isEmpty()) {
-      return "Error: Quantity is required.";
-    }
-    if (orderNumber == null || orderNumber.isEmpty()) {
-      return "Error: Order number is required.";
-    }
-
-    if (!Order.hasWithNumber(Integer.parseInt(orderNumber))) {
+    InventoryItem anitem = InventoryItem.getWithName(item);
+    if (anitem == null){
+      return "Item " + item + " does not exist.";
+    } 
+    Order anOrder = Order.getWithNumber(Integer.parseInt(orderNumber));
+    if (anOrder == null){
       return "Order " + orderNumber + " does not exist";
     }
-    if (!Item.hasWithName(item)) {
-      return "Item " + item + " does not exist.";
-    }
     try {
-      if (Integer.parseInt(quantity) <= 0) {
-        return "Quantity must be greater than 0.";
-      }
-      Item itemObj = (Item) Item.getWithName(item);
-      Order order = Order.getWithNumber(Integer.parseInt(orderNumber));
-      if (order.getStatus() != Order.Status.Started || order.getStatus() != Order.Status.Final) {
-        return "Cannot add items to a " + order.getStatus() + " order";
-      }
-      if (order.getOrderItems().contains(itemObj)) {
-        return "Item " + item + " already existsin the order " + orderNumber + ".";
-      }
-      order.addItemToOrder(itemObj, Integer.parseInt(quantity));
-      CoolsuppliesPersistence.save();
-      return "Order updated successfully.";
+      anOrder.addItemToOrder(anitem, Integer.parseInt(quantity));
     } catch (Exception e) {
+      if (e.getMessage().startsWith("Unable to create order item due to")){
+        return "Item "+ item + " already exists in the order " + orderNumber + ".";
+      }
       return e.getMessage();
     }
+    return "";
   }
 }
