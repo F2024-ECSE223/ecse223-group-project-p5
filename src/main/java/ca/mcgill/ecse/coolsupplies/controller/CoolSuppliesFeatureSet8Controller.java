@@ -39,14 +39,14 @@ public class CoolSuppliesFeatureSet8Controller {
     }
     Student student = Student.getWithName(studentName);
     if (student == null){
-      return "Student" + studentName + "does not exist"; 
+      return "Student " + studentName + " does not exist."; 
     }
     try {
       order.updateOrder(PurchaseLevel.valueOf(purchaseLevel), student);
       CoolsuppliesPersistence.save();
     } catch (Exception e) {
       if(e.getMessage().startsWith("No enum constant")){
-        return" Purchase level " + purchaseLevel +" does not exist ";
+        return "Purchase level " + purchaseLevel +" does not exist.";
       }
       return e.getMessage();
     }
