@@ -50,16 +50,30 @@ public class CoolSuppliesFeatureSet11Controller {
       if(orderItem.getItem() instanceof GradeBundle myGradeBundle)
       {
         int discount = myGradeBundle.getDiscount();
+        List<BundleItem> aListBundleItems =new ArrayList<BundleItem>();
         for (BundleItem bundleItem : myGradeBundle.getBundleItems())
         {
           if(itemIsOfLevel(myOrder.getLevel(), bundleItem.getLevel()))
           {
-            toItems.add(new TOOrderItem(orderItem.getQuantity() *  bundleItem.getQuantity(),
-                    bundleItem.getItem().getName(),
+            aListBundleItems.add(bundleItem);
+          }
+        }
+        for (BundleItem someBundleItem : aListBundleItems){
+          if (aListBundleItems.size()>=2){
+            toItems.add(new TOOrderItem(orderItem.getQuantity() *  someBundleItem.getQuantity(),
+                    someBundleItem.getItem().getName(),
                     myGradeBundle.getName(),
-                    bundleItem.getItem().getPrice(),
-                    -discount * 0.01 * bundleItem.getItem().getPrice()));
-            totalPrice +=orderItem.getQuantity() * bundleItem.getQuantity() * bundleItem.getItem().getPrice() * (1 - discount * 0.01);
+                    someBundleItem.getItem().getPrice(),
+                    -discount * 0.01 * someBundleItem.getItem().getPrice()));
+            totalPrice +=orderItem.getQuantity() * someBundleItem.getQuantity() * someBundleItem.getItem().getPrice() * (1 - discount * 0.01);
+
+          }else{
+            toItems.add(new TOOrderItem(orderItem.getQuantity() *  someBundleItem.getQuantity(),
+                    someBundleItem.getItem().getName(),
+                    myGradeBundle.getName(),
+                    someBundleItem.getItem().getPrice(),
+                    0));
+            totalPrice +=orderItem.getQuantity() * someBundleItem.getQuantity() * someBundleItem.getItem().getPrice() ;
           }
         }
       }
