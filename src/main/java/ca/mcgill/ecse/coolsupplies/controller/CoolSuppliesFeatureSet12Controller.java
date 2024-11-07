@@ -27,7 +27,7 @@ public class CoolSuppliesFeatureSet12Controller {
 	  int orderNumberInt = Integer.parseInt(orderNumber);
 	  Order order = Order.getWithNumber(orderNumberInt);
 	  if (order == null) {
-		  return String.format("The order %d does not exist.", orderNumberInt);
+		  return String.format("Order %d does not exist", orderNumberInt);
 	  }
 	  
 	  try {
@@ -56,7 +56,7 @@ public class CoolSuppliesFeatureSet12Controller {
 	  int orderNumberInt = Integer.parseInt(orderNumber);
 	  Order order = Order.getWithNumber(orderNumberInt);
 	  if (order == null) {
-		  return String.format("The order %d does not exist.", orderNumberInt);
+		  return String.format("Order %d does not exist", orderNumberInt);
 	  }
 	  
 	  try {
