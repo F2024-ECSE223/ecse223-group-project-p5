@@ -1,11 +1,11 @@
 /*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
+/*This code was generated using the UMPLE 1.33.0.6934.a386b0a58 modeling language!*/
 
 package ca.mcgill.ecse.coolsupplies.model;
 import java.util.*;
 
-// line 55 "../../../../../../CoolSuppliesPersistence.ump"
-// line 82 "../../../../../../CoolSupplies.ump"
+// line 55 "../../../../../CoolSuppliesPersistence.ump"
+// line 82 "../../../../../CoolSupplies.ump"
 public class Grade
 {
 
@@ -35,13 +35,13 @@ public class Grade
   {
     if (!setLevel(aLevel))
     {
-      throw new RuntimeException("Cannot create due to duplicate level. See https://manual.umple.org?RE003ViolationofUniqueness.html");
+      throw new RuntimeException("Cannot create due to duplicate level. See http://manual.umple.org?RE003ViolationofUniqueness.html");
     }
     students = new ArrayList<Student>();
     boolean didAddCoolSupplies = setCoolSupplies(aCoolSupplies);
     if (!didAddCoolSupplies)
     {
-      throw new RuntimeException("Unable to create grade due to coolSupplies. See https://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
+      throw new RuntimeException("Unable to create grade due to coolSupplies. See http://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
     }
   }
 
@@ -269,7 +269,7 @@ public class Grade
     }
   }
 
-  // line 57 "../../../../../../CoolSuppliesPersistence.ump"
+  // line 57 "../../../../../CoolSuppliesPersistence.ump"
    public static  void reinitializeUniqueLevel(List<Grade> grades){
     gradesByLevel.clear();
     		for (var grade : grades) {

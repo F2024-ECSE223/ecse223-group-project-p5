@@ -1,11 +1,11 @@
 /*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
+/*This code was generated using the UMPLE 1.33.0.6934.a386b0a58 modeling language!*/
 
 package ca.mcgill.ecse.coolsupplies.model;
 import java.util.*;
 
-// line 42 "../../../../../../CoolSuppliesPersistence.ump"
-// line 59 "../../../../../../CoolSupplies.ump"
+// line 42 "../../../../../CoolSuppliesPersistence.ump"
+// line 59 "../../../../../CoolSupplies.ump"
 public abstract class InventoryItem
 {
 
@@ -33,7 +33,7 @@ public abstract class InventoryItem
   {
     if (!setName(aName))
     {
-      throw new RuntimeException("Cannot create due to duplicate name. See https://manual.umple.org?RE003ViolationofUniqueness.html");
+      throw new RuntimeException("Cannot create due to duplicate name. See http://manual.umple.org?RE003ViolationofUniqueness.html");
     }
     orderItems = new ArrayList<OrderItem>();
   }
@@ -188,7 +188,7 @@ public abstract class InventoryItem
     }
   }
 
-  // line 44 "../../../../../../CoolSuppliesPersistence.ump"
+  // line 44 "../../../../../CoolSuppliesPersistence.ump"
    public static  void reinitializeUniqueItemName(List<Item> items, List<GradeBundle> gradeBundles){
     inventoryitemsByName.clear();
      		for (var item : items) {

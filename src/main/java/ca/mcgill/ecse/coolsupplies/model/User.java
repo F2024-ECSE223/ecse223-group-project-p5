@@ -1,11 +1,11 @@
 /*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
+/*This code was generated using the UMPLE 1.33.0.6934.a386b0a58 modeling language!*/
 
 package ca.mcgill.ecse.coolsupplies.model;
 import java.util.*;
 
-// line 11 "../../../../../../CoolSuppliesPersistence.ump"
-// line 19 "../../../../../../CoolSupplies.ump"
+// line 11 "../../../../../CoolSuppliesPersistence.ump"
+// line 19 "../../../../../CoolSupplies.ump"
 public abstract class User
 {
 
@@ -36,7 +36,7 @@ public abstract class User
     password = aPassword;
     if (!setEmail(aEmail))
     {
-      throw new RuntimeException("Cannot create due to duplicate email. See https://manual.umple.org?RE003ViolationofUniqueness.html");
+      throw new RuntimeException("Cannot create due to duplicate email. See http://manual.umple.org?RE003ViolationofUniqueness.html");
     }
   }
 
@@ -98,7 +98,7 @@ public abstract class User
     usersByEmail.remove(getEmail());
   }
 
-  // line 13 "../../../../../../CoolSuppliesPersistence.ump"
+  // line 13 "../../../../../CoolSuppliesPersistence.ump"
    public static  void reinitializeUniqueEmail(List<Parent> parents, SchoolAdmin admin){
     usersByEmail.clear();
     		for (var parent : parents) {

@@ -1,5 +1,5 @@
 /*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
+/*This code was generated using the UMPLE 1.33.0.6934.a386b0a58 modeling language!*/
 
 package ca.mcgill.ecse.coolsupplies.model;
 
@@ -45,17 +45,17 @@ public class BundleItem
     boolean didAddCoolSupplies = setCoolSupplies(aCoolSupplies);
     if (!didAddCoolSupplies)
     {
-      throw new RuntimeException("Unable to create bundleItem due to coolSupplies. See https://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
+      throw new RuntimeException("Unable to create bundleItem due to coolSupplies. See http://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
     }
     boolean didAddBundle = setBundle(aBundle);
     if (!didAddBundle)
     {
-      throw new RuntimeException("Unable to create bundleItem due to bundle. See https://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
+      throw new RuntimeException("Unable to create bundleItem due to bundle. See http://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
     }
     boolean didAddItem = setItem(aItem);
     if (!didAddItem)
     {
-      throw new RuntimeException("Unable to create bundleItem due to item. See https://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
+      throw new RuntimeException("Unable to create bundleItem due to item. See http://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
     }
   }
 

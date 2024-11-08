@@ -1,13 +1,13 @@
 /*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
+/*This code was generated using the UMPLE 1.33.0.6934.a386b0a58 modeling language!*/
 
 package ca.mcgill.ecse.coolsupplies.model;
 import ca.mcgill.ecse.coolsupplies.model.BundleItem.PurchaseLevel;
 import java.util.*;
 import java.sql.Date;
 
-// line 22 "../../../../../../CoolSuppliesPersistence.ump"
-// line 37 "../../../../../../CoolSupplies.ump"
+// line 22 "../../../../../CoolSuppliesPersistence.ump"
+// line 37 "../../../../../CoolSupplies.ump"
 public class Student
 {
 
@@ -38,18 +38,18 @@ public class Student
   {
     if (!setName(aName))
     {
-      throw new RuntimeException("Cannot create due to duplicate name. See https://manual.umple.org?RE003ViolationofUniqueness.html");
+      throw new RuntimeException("Cannot create due to duplicate name. See http://manual.umple.org?RE003ViolationofUniqueness.html");
     }
     boolean didAddCoolSupplies = setCoolSupplies(aCoolSupplies);
     if (!didAddCoolSupplies)
     {
-      throw new RuntimeException("Unable to create student due to coolSupplies. See https://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
+      throw new RuntimeException("Unable to create student due to coolSupplies. See http://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
     }
     orders = new ArrayList<Order>();
     boolean didAddGrade = setGrade(aGrade);
     if (!didAddGrade)
     {
-      throw new RuntimeException("Unable to create student due to grade. See https://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
+      throw new RuntimeException("Unable to create student due to grade. See http://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
     }
   }
 
@@ -297,7 +297,7 @@ public class Student
     }
   }
 
-  // line 24 "../../../../../../CoolSuppliesPersistence.ump"
+  // line 24 "../../../../../CoolSuppliesPersistence.ump"
    public static  void reinitializeUniqueStudentName(List<Student> students){
     studentsByName.clear();
     		for (var student : students) {
