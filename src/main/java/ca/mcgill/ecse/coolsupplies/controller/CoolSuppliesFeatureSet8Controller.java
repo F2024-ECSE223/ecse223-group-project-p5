@@ -44,9 +44,6 @@ public class CoolSuppliesFeatureSet8Controller {
     if ((!purchaseLevel.equals("Mandatory")) && (!purchaseLevel.equals("Optional")) && (!purchaseLevel.equals("Recommended"))){
       return "Purchase level " +purchaseLevel +" does not exist.";
     }
-    if (order.getOrderItems().size()==0){
-      return "Order "+ orderNumber +" has no items.";
-    }
     try {
       order.updateOrder(PurchaseLevel.valueOf(purchaseLevel), student);
       CoolsuppliesPersistence.save();
