@@ -8,6 +8,7 @@ import ca.mcgill.ecse.coolsupplies.model.CoolSupplies;
 import ca.mcgill.ecse.coolsupplies.model.InventoryItem;
 import ca.mcgill.ecse.coolsupplies.model.Item;
 import ca.mcgill.ecse.coolsupplies.model.Order;
+import ca.mcgill.ecse.coolsupplies.model.OrderItem;
 import ca.mcgill.ecse.coolsupplies.model.Student;
 import ca.mcgill.ecse.coolsupplies.model.BundleItem.PurchaseLevel;
 import ca.mcgill.ecse.coolsupplies.persistence.CoolsuppliesPersistence;
@@ -84,6 +85,13 @@ public static String updateOrder(String orderNumber, String purchaseLevel, Strin
     Order anOrder = Order.getWithNumber(Integer.parseInt(orderNumber));
     if (anOrder == null){
       return "Order " + orderNumber + " does not exist";
+    }
+    for(OrderItem orderItem : anOrder.getOrderItems())
+    {
+      if(orderItem.getItem().equals(InventoryItem.getWithName(item)))
+      {
+        return "Item " + item + " already exists in the order " + orderNumber + ".";
+      }
     }
     try {
       anOrder.addItemToOrder(anitem, Integer.parseInt(quantity));
