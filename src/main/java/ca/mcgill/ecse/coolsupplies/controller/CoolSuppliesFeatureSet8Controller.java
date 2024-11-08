@@ -20,20 +20,17 @@ public class CoolSuppliesFeatureSet8Controller {
   private CoolSuppliesFeatureSet8Controller() {}
 
   
-/**
- * Updates an existing order in the system with a new purchase level and a new student.
- * 
- * @param orderNumber the unique identifier of the order to be updated
- * @param purchaseLevel the new purchase level to be set for the order
- * @param studentName the name of the student to be associated with the order
- * @return a string message indicating the result of the update operation:
- *         - "Order {orderNumber} does not exist" if the order is not found
- *         - "Student {studentName} does not exist" if the student is not found
- *         - "Purchase level {purchaseLevel} does not exist" if the purchase level is invalid
- *         - an error message if an exception occurs
- *         - an empty string if the update is successful
- * @author Jiaduo Xing
- */
+
+   
+  /**
+   * Updates an order in CoolSupplies including its purchase level and student.
+   * 
+   * @param orderNumber the number of the order
+   * @param purchaseLevel the new purchase level of the order
+   * @param studentName the new student associated with the order
+   * @return an error string if there is any
+   * @author Jiaduo Xing
+   */
 public static String updateOrder(String orderNumber, String purchaseLevel, String studentName) {
   Order order = Order.getWithNumber(Integer.parseInt(orderNumber));
   
@@ -69,15 +66,17 @@ public static String updateOrder(String orderNumber, String purchaseLevel, Strin
   return "";
 }
 
-  /**
-   * Adds an item to an order in CoolSupplies.
-   * 
-   * @param item the name of the item
-   * @param quantity the quantity of the item
-   * @param orderNumber the order number
-   * @return an error string if there is any
-   * @author Jiaduo Xing
-   */
+  
+/**
+ * Adds an item to an order with the given quantity.
+ * The item must exist, the order must exist, and the quantity must be greater than 0.
+ * The item must not already be in the order.
+ * @param item the name of the item to add
+ * @param quantity the quantity of the item to add
+ * @param orderNumber the number of the order to add the item to
+ * @return an error message if the operation fails, an empty string otherwise
+ * @author Jiaduo Xing
+ */
   public static String addOrderItem(String item, String quantity, String orderNumber) {
     InventoryItem anitem = InventoryItem.getWithName(item);
     if (anitem == null){
