@@ -473,7 +473,7 @@ public class CoolSupplies
     return 0;
   }
   /* Code from template association_AddManyToOne */
-  public static Item addItem(String aName, int aPrice)
+  public Item addItem(String aName, int aPrice)
   {
     return new Item(aName, aPrice, this);
   }
