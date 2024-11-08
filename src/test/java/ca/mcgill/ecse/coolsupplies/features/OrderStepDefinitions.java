@@ -80,8 +80,8 @@ public class OrderStepDefinitions {
     List<Map<String, String>> rows = dataTable.asMaps();
     for (var row : rows) {
       String itemName = row.get("name");
-      int quantity = Integer.parseInt(row.get("quantity"));
-      CoolSupplies.addItem(itemName, quantity);
+      int price = Integer.parseInt(row.get("price"));
+      coolSupplies.addItem(itemName, price);
 
     }
   }
@@ -132,31 +132,12 @@ public class OrderStepDefinitions {
       io.cucumber.datatable.DataTable dataTable) {
     List<Map<String, String>> rows = dataTable.asMaps();
 
-    for (Map<String, String> orderitems : rows) {
-        List<Order> orders = orders.getOrders();
-        List<Item> items = coolSupplies.getItems();
-
-        Order order = null;
-    for (Order o : orders) {
-      if (o.getNumber() == Integer.parseInt(orderItems.get("orderNumber"))) {
-        order = o;
-        break;
-      }
+    for (Map<String, String> orderItem : rows) {
+      int myQuantity = Integer.parseInt(orderItem.get("quantity"));
+      Order myOrder = Order.getWithNumber(Integer.parseInt(orderItem.get("orderNumber"))); 
+      InventoryItem myInventoryItem = InventoryItem.getWithName(orderItem.get("itemName"));
+      coolSupplies.addOrderItem(myQuantity, myOrder, myInventoryItem);
     }
-
-    // Find the specific item by its name
-    Item item = null;
-    for (Item i : items) {
-      if (i.getName().equals(orderItems.get("itemName"))) {
-        item = i;
-        break;
-      }
-    }
-
-          coolSupplies.addOrderItem(Integer.parseInt(orderItems.get("quantity")),
-          BundleItem.PurchaseLevel.valueOf(bundleItems.get("level")),
-          bundle, item);
-        }
   }
     
 
@@ -184,9 +165,8 @@ public class OrderStepDefinitions {
    */
   @When("the parent attempts to update an item {string} with quantity {string} in the order {string}")
   public void the_parent_attempts_to_update_an_item_with_quantity_in_the_order(String item, String quantity, String orderNumber) {
-    callController(CoolSuppliesFeatureSet9Controller.updateOrderItem(item,quantity,orderNumber));
+    callController(CoolSuppliesFeatureSet9Controller.updateOrderItem(item, quantity, orderNumber));
   }
-
 
   @When("the parent attempts to delete an item {string} from the order {string}")
   public void the_parent_attempts_to_delete_an_item_from_the_order(String string, String string2) {
@@ -275,12 +255,9 @@ public class OrderStepDefinitions {
    * @author Jiaduo Xing
    */
   @Then("the order {string} shall contain {string} item")
-  public void the_order_shall_contain_item(String orderNum, String itemName) {
-    Order order = Order.getWithNumber(Integer.parseInt(orderNum));
-    Item item = (Item) InventoryItem.getWithName(itemName);
-    for (OrderItem orderItem : order.getOrderItems()) {
-      assertTrue(orderItem.getItem().equals(item));
-    }
+  public void the_order_shall_contain_item(String orderNumber, String expectedQuantity) {
+    int actualQuantity = Order.getWithNumber(Integer.parseInt(orderNumber)).getOrderItems().size();
+    assertEquals(Integer.parseInt(expectedQuantity), actualQuantity);
   }
 
   @Then("the order {string} shall not contain {string}")
@@ -295,7 +272,7 @@ public class OrderStepDefinitions {
    */
   @Then("the number of order items in the system shall be {string}")
   public void the_number_of_order_items_in_the_system_shall_be(String expectedCount) {
-    int actualCount = coolSupplies.getAllOrderItems().size();
+    int actualCount = coolSupplies.getOrderItems().size();
     assertEquals(Integer.parseInt(expectedCount), actualCount);
   }
 /**
@@ -303,8 +280,7 @@ public class OrderStepDefinitions {
    */
   @Then("the order {string} shall contain {string} items")
   public void the_order_shall_contain_items(String orderNumber, String expectedQuantity) {
-    Order order = Order.getWithNumber(Integer.parseInt(orderNumber));
-    int actualQuantity = order.getOrderItems().stream().mapToInt(OrderItem::getQuantity).sum();
+    int actualQuantity = Order.getWithNumber(Integer.parseInt(orderNumber)).getOrderItems().size();
     assertEquals(Integer.parseInt(expectedQuantity), actualQuantity);
   }
 
