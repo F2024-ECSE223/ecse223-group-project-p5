@@ -32,27 +32,40 @@ public class CoolSuppliesFeatureSet8Controller {
  *         - an empty string if the update is successful
  * @author Jiaduo Xing
  */
-  public static String updateOrder(String orderNumber, String purchaseLevel, String studentName) {
-    Order order = Order.getWithNumber(Integer.parseInt(orderNumber));
-    if (order == null){
-      return "Order " + orderNumber + " does not exist";
-    }
-    Student student = Student.getWithName(studentName);
-    if (student == null){
-      return "Student " + studentName + " does not exist."; 
-    }
-    if ((!purchaseLevel.equals("Mandatory")) && (!purchaseLevel.equals("Optional")) && (!purchaseLevel.equals("Recommended"))){
-      return "Purchase level " +purchaseLevel +" does not exist.";
-    }
-    try {
-      order.updateOrder(PurchaseLevel.valueOf(purchaseLevel), student);
-      CoolsuppliesPersistence.save();
-    } catch (Exception e) {
-      return e.getMessage();
-    }
-    return "";
+public static String updateOrder(String orderNumber, String purchaseLevel, String studentName) {
+  Order order = Order.getWithNumber(Integer.parseInt(orderNumber));
+  
+  if (order == null) {
+      return "Order " + orderNumber + " does not exist.";
   }
 
+  Parent parent = order.getParent();
+  Student student = Student.getWithName(studentName);
+  
+  if (student == null) {
+      return "Student " + studentName + " does not exist.";
+  }
+
+  if (!student.getParent().getEmail().equals(parent.getEmail())) {
+      return "Student " + studentName + " is not a child of the parent " + parent.getEmail() + ".";
+  }
+  
+  PurchaseLevel aPurchaseLevel;
+  try {
+      aPurchaseLevel = PurchaseLevel.valueOf(purchaseLevel);
+  } catch (IllegalArgumentException e) {
+      return "Purchase level " + purchaseLevel + " does not exist.";
+  }
+  
+  try {
+      order.updateOrder(aPurchaseLevel, student);
+      CoolsuppliesPersistence.save();
+  } catch (Exception e) {
+      return e.getMessage();
+  }
+
+  return "";
+}
 
   /**
    * Adds an item to an order in CoolSupplies.
