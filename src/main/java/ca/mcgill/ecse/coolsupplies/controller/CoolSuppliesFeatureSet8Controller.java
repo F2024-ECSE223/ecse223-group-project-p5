@@ -9,6 +9,7 @@ import ca.mcgill.ecse.coolsupplies.model.InventoryItem;
 import ca.mcgill.ecse.coolsupplies.model.Item;
 import ca.mcgill.ecse.coolsupplies.model.Order;
 import ca.mcgill.ecse.coolsupplies.model.OrderItem;
+import ca.mcgill.ecse.coolsupplies.model.Parent;
 import ca.mcgill.ecse.coolsupplies.model.Student;
 import ca.mcgill.ecse.coolsupplies.model.BundleItem.PurchaseLevel;
 import ca.mcgill.ecse.coolsupplies.persistence.CoolsuppliesPersistence;
