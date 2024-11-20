@@ -1,6 +1,21 @@
 package ca.mcgill.ecse.coolsupplies.javafx.fxml.controllers;
 
 import java.util.List;
+import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet11Controller;
+import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet1Controller;
+import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet2Controller;
+import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet3Controller;
+import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet4Controller;
+import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet5Controller;
+import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet6Controller;
+import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet7Controller;
+import ca.mcgill.ecse.coolsupplies.controller.TOBundleItem;
+import ca.mcgill.ecse.coolsupplies.controller.TOGrade;
+import ca.mcgill.ecse.coolsupplies.controller.TOGradeBundle;
+import ca.mcgill.ecse.coolsupplies.controller.TOItem;
+import ca.mcgill.ecse.coolsupplies.controller.TOOrder;
+import ca.mcgill.ecse.coolsupplies.controller.TOParent;
+import ca.mcgill.ecse.coolsupplies.controller.TOStudent;
 import ca.mcgill.ecse.coolsupplies.javafx.fxml.CoolSuppliesFxmlView;
 // import ca.mcgill.ecse.btms.controller.BtmsController;
 // import ca.mcgill.ecse.btms.controller.TODriver;
@@ -66,23 +81,39 @@ public class ViewUtils {
   public static void showError(String message) {
     makePopupWindow("Error", message);
   }
+  
+  public static ObservableList<TOParent> getParents(){
+    List<TOParent> parents = CoolSuppliesFeatureSet1Controller.getParents();
 
-  // public static ObservableList<TODriver> getDrivers() {
-  //   List<TODriver> drivers = BtmsController.getDrivers();
-  //   // as javafx works with observable list, we need to convert the java.util.List to
-  //   // javafx.collections.observableList
-  //   return FXCollections.observableList(drivers);
-  // }
+    return FXCollections.observableArrayList(parents);
+  }
 
-  // public static ObservableList<String> getBuses() {
-  //   return FXCollections.observableList(BtmsController.getBuses());
-  // }
+  public static ObservableList<TOStudent> getStudents(){
+    return FXCollections.observableList(CoolSuppliesFeatureSet2Controller.getStudents());
+  }
 
-  // public static ObservableList<Integer> getRoutes() {
-  //   return FXCollections.observableList(BtmsController.getRoutes());
-  // }
+  public static ObservableList<TOItem> getItems(){
+    return FXCollections.observableList(CoolSuppliesFeatureSet3Controller.getItems());
+  }
 
-  // public static ObservableList<TORouteAssignment> getAssignments() {
-  //   return FXCollections.observableList(BtmsController.getAssignments());
-  // }
+  public static ObservableList<TOGradeBundle> getBundles(){
+    return FXCollections.observableList(CoolSuppliesFeatureSet4Controller.getBundles());
+  }
+
+  public static ObservableList<TOBundleItem> getBundleItems(String bundleName){
+    return FXCollections.observableList(CoolSuppliesFeatureSet5Controller.getBundleItems(bundleName));
+  }
+
+  public static ObservableList<TOStudent> getStudentsOfParent(String parentEmail){
+    return FXCollections.observableList(CoolSuppliesFeatureSet6Controller.getStudentsOfParent(parentEmail));
+  }
+
+  public static ObservableList<TOGrade> getGrades(){
+    return FXCollections.observableList(CoolSuppliesFeatureSet7Controller.getGrades());
+  }
+
+  public static ObservableList<TOOrder> viewAllOrders(){
+    return FXCollections.observableList(CoolSuppliesFeatureSet11Controller.viewAllOrders());
+  } 
+
 }
