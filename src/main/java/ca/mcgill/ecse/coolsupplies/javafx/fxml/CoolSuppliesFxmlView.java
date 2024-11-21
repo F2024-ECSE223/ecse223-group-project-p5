@@ -30,7 +30,7 @@ public class CoolSuppliesFxmlView extends Application {
       primaryStage.setScene(scene);
       primaryStage.setMinWidth(800);
       primaryStage.setMinHeight(600);
-      primaryStage.setTitle("BTMS");
+      primaryStage.setTitle("CoolSupplies");
       primaryStage.show();
       refresh();
     } catch (IOException e) {

@@ -1,7 +1,7 @@
 package ca.mcgill.ecse.coolsupplies.javafx.fxml.controllers;
 
 import java.util.List;
-import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet11Controller;
+import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet13Controller;
 import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet1Controller;
 import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet2Controller;
 import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet3Controller;
@@ -13,14 +13,10 @@ import ca.mcgill.ecse.coolsupplies.controller.TOBundleItem;
 import ca.mcgill.ecse.coolsupplies.controller.TOGrade;
 import ca.mcgill.ecse.coolsupplies.controller.TOGradeBundle;
 import ca.mcgill.ecse.coolsupplies.controller.TOItem;
-import ca.mcgill.ecse.coolsupplies.controller.TOOrder;
+import ca.mcgill.ecse.coolsupplies.controller.TOOrderItem;
 import ca.mcgill.ecse.coolsupplies.controller.TOParent;
 import ca.mcgill.ecse.coolsupplies.controller.TOStudent;
 import ca.mcgill.ecse.coolsupplies.javafx.fxml.CoolSuppliesFxmlView;
-// import ca.mcgill.ecse.btms.controller.BtmsController;
-// import ca.mcgill.ecse.btms.controller.TODriver;
-// import ca.mcgill.ecse.btms.controller.TORouteAssignment;
-// import ca.mcgill.ecse.btms.javafx.fxml.BtmsFxmlView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -108,12 +104,13 @@ public class ViewUtils {
     return FXCollections.observableList(CoolSuppliesFeatureSet6Controller.getStudentsOfParent(parentEmail));
   }
 
+  public static ObservableList<TOOrderItem> getOrderItems(int orderNumber){
+    return FXCollections.observableList(CoolSuppliesFeatureSet13Controller.getOrderItems(orderNumber));
+  }
+
   public static ObservableList<TOGrade> getGrades(){
     return FXCollections.observableList(CoolSuppliesFeatureSet7Controller.getGrades());
   }
 
-  public static ObservableList<TOOrder> viewAllOrders(){
-    return FXCollections.observableList(CoolSuppliesFeatureSet11Controller.viewAllOrders());
-  } 
 
 }
