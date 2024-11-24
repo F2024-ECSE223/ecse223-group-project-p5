@@ -2,6 +2,7 @@ package ca.mcgill.ecse.coolsupplies.javafx.fxml.controllers;
 
 import java.util.List;
 import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet13Controller;
+import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet11Controller;
 import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet1Controller;
 import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet2Controller;
 import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet3Controller;
@@ -110,6 +111,10 @@ public class ViewUtils {
 
   public static ObservableList<TOGrade> getGrades(){
     return FXCollections.observableList(CoolSuppliesFeatureSet7Controller.getGrades());
+  }
+
+  public static ObservableList<TOOrder> getOrders(){
+    return FXCollections.observableList(CoolSuppliesFeatureSet11Controller.viewAllOrders());
   }
 
 
