@@ -2,8 +2,23 @@ package ca.mcgill.ecse.coolsupplies.javafx.fxml.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import ca.mcgill.ecse.coolsupplies.controller.*;
+import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet13Controller;
+import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet11Controller;
+import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet1Controller;
+import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet2Controller;
+import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet3Controller;
+import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet4Controller;
+import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet5Controller;
+import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet6Controller;
+import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet7Controller;
+import ca.mcgill.ecse.coolsupplies.controller.TOBundleItem;
+import ca.mcgill.ecse.coolsupplies.controller.TOGrade;
+import ca.mcgill.ecse.coolsupplies.controller.TOGradeBundle;
+import ca.mcgill.ecse.coolsupplies.controller.TOItem;
+import ca.mcgill.ecse.coolsupplies.controller.TOOrder;
+import ca.mcgill.ecse.coolsupplies.controller.TOOrderItem;
+import ca.mcgill.ecse.coolsupplies.controller.TOParent;
+import ca.mcgill.ecse.coolsupplies.controller.TOStudent;
 import ca.mcgill.ecse.coolsupplies.javafx.fxml.CoolSuppliesFxmlView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -65,7 +80,7 @@ public class ViewUtils {
   public static void showError(String message) {
     makePopupWindow("Error", message);
   }
-  
+
   public static ObservableList<TOParent> getParents(){
     List<TOParent> parents = CoolSuppliesFeatureSet1Controller.getParents();
 
