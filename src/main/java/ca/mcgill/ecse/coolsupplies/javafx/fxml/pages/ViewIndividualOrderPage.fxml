@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="467.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button fx:id="submitInput" layoutX="408.0" layoutY="44.0" mnemonicParsing="false" onAction="#showOrder" text="Find My Order" />
+      <TextField fx:id="textInput" layoutX="178.0" layoutY="44.0" prefHeight="26.0" prefWidth="181.0" />
+      <Text layoutX="178.0" layoutY="30.0" opacity="0.6" strokeType="OUTSIDE" strokeWidth="0.0" text="Order Number" />
+      <VBox fx:id="buttonsContainer" layoutX="178.0" layoutY="80.0" spacing="10" visible="false" managed="false">
+         <Button fx:id="payOrderButton" text="Pay for Order" onAction="#payForOrder" />
+         <Button fx:id="payPenaltyButton" text="Pay Penalty for Order" onAction="#payPenaltyForOrder" />
+      </VBox>
+      <ScrollPane fx:id="orderScrollPane" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED" layoutY="140.0" prefHeight="328.0" prefWidth="680.0">
+         <content>
+            <VBox fx:id="orderDetailsContainer" spacing="10" style="-fx-padding: 10;" prefWidth="650.0">
+               <VBox spacing="5">
+                  <Label text="Order Details" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                  <Label text="Order Number:" />
+                  <Text fx:id="orderNumberText" text="N/A" />
+                  <Label text="Date:" />
+                  <Text fx:id="orderDateText" text="N/A" />
+                  <Label text="Status:" />
+                  <Text fx:id="orderStatusText" text="N/A" />
+               </VBox>
+               <VBox spacing="5">
+                  <Label text="Parent Information" style="-fx-font-weight: bold;" />
+                  <Label text="Parent Name:" />
+                  <Text fx:id="parentNameText" text="N/A" />
+                  <Label text="Student Name:" />
+                  <Text fx:id="studentNameText" text="N/A" />
+                  <Label text="Level:" />
+                  <Text fx:id="studentLevelText" text="N/A" />
+               </VBox>
+               <VBox spacing="5">
+                  <Label text="Penalty Authorization Code" style="-fx-font-weight: bold;" />
+                  <Text fx:id="penaltyAuthCodeText" text="N/A" />
+                  <Label text="Authorization Code" style="-fx-font-weight: bold;" />
+                  <Text fx:id="authCodeText" text="N/A" />
+               </VBox>
+               <VBox spacing="5">
+                  <Label text="Items" style="-fx-font-weight: bold;" />
+                  <VBox fx:id="itemsContainer" spacing="5">
+                     <Label text="No items to display." fx:id="emptyItemsLabel" />
+                  </VBox>
+               </VBox>
+               <VBox spacing="5">
+                  <Label text="Total Price:" style="-fx-font-weight: bold;" />
+                  <Text fx:id="totalPriceText" text="N/A" />
+               </VBox>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
