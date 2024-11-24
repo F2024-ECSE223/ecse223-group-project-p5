@@ -14,6 +14,7 @@ import ca.mcgill.ecse.coolsupplies.controller.TOBundleItem;
 import ca.mcgill.ecse.coolsupplies.controller.TOGrade;
 import ca.mcgill.ecse.coolsupplies.controller.TOGradeBundle;
 import ca.mcgill.ecse.coolsupplies.controller.TOItem;
+import ca.mcgill.ecse.coolsupplies.controller.TOOrder;
 import ca.mcgill.ecse.coolsupplies.controller.TOOrderItem;
 import ca.mcgill.ecse.coolsupplies.controller.TOParent;
 import ca.mcgill.ecse.coolsupplies.controller.TOStudent;
