@@ -28,7 +28,10 @@
             <Tab text="Pay Order" />
             <Tab text="View Individual Order" />
             <Tab text="Start School Year" />
-            <Tab text="Grade" />
+            <Tab text="Grade">
+               <content>
+                  <fx:include source="pages/GradePage.fxml" />
+               </content></Tab>
             <Tab text="View All Orders" />
         </tabs>
       </TabPane>
