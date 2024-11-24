@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.mcgill.ecse.coolsupplies.javafx.fxml.controllers.ItemOrderPageController">
+    <rowConstraints>
+        <RowConstraints vgrow="ALWAYS" />
+        <RowConstraints vgrow="ALWAYS" />
+    </rowConstraints>
+    <columnConstraints>
+        <ColumnConstraints hgrow="ALWAYS" />
+    </columnConstraints>
+    <children>
+        <GridPane alignment="CENTER" GridPane.rowIndex="0" GridPane.vgrow="ALWAYS" GridPane.hgrow="ALWAYS">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Label alignment="CENTER_RIGHT" text="Select Item:" />
+                <Label alignment="CENTER_RIGHT" text="Quantity:" GridPane.columnIndex="2" />
+                <Label alignment="CENTER_RIGHT" text="Select Order" GridPane.columnIndex="4" />
+                <ChoiceBox fx:id="selectOrderItemChoiceBox" prefWidth="150.0" GridPane.columnIndex="5" GridPane.hgrow="ALWAYS" />
+                <TextField fx:id="itemQuantityTextField" layoutX="110.0" layoutY="12.0" GridPane.columnIndex="3" />
+              <ChoiceBox fx:id="selectOrderChoiceBox" layoutX="510.0" layoutY="12.0" prefWidth="150.0" GridPane.columnIndex="1" />
+            </children>
+        </GridPane>
+      <GridPane alignment="CENTER" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" GridPane.hgrow="ALWAYS">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addItemToOrderClicked" text="Add Item to Order" GridPane.hgrow="ALWAYS" />
+                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateItemInOrderClicked" text="Update Item in Order" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" />
+                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteItemFromOrderClicked" text="Delete from Order" GridPane.columnIndex="2" />
+         </children>
+      </GridPane>
+    </children>
+</GridPane>
