@@ -18,16 +18,16 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <Label alignment="CENTER_RIGHT" text="Bundle Name:" />
-        <Label alignment="CENTER_RIGHT" text="Grade Level:" GridPane.columnIndex="2" />
+        <Label alignment="CENTER_RIGHT" text="Bundle Name: " GridPane.valignment="CENTER" GridPane.halignment="RIGHT"/>
+        <Label alignment="CENTER_RIGHT" text="Grade Level: " GridPane.columnIndex="2" GridPane.valignment="CENTER" GridPane.halignment="RIGHT"/>
         <TextField fx:id="bundleNameTextField" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" />
         <ChoiceBox fx:id="bundleGradeLevelChoiceBox" prefWidth="150.0" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" />
         <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteBundleClicked" text="Delete Bundle" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-        <Label alignment="CENTER_RIGHT" text="Select Bundle:" GridPane.columnIndex="4" />
+        <Label alignment="CENTER_RIGHT" text="Select Bundle: " GridPane.columnIndex="4" GridPane.valignment="CENTER" GridPane.halignment="RIGHT"/>
         <ChoiceBox fx:id="selectBundleChoiceBox" prefWidth="150.0" GridPane.columnIndex="5" GridPane.hgrow="ALWAYS" />
         <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addBundleClicked" text="Add Bundle" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
         <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateBundleClicked" text="Update Bundle" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
-      <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="16.0" text="Discount:" GridPane.rowIndex="1" />
+      <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="16.0" text="Discount: " GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.halignment="RIGHT"/>
       <TextField fx:id="bundleDiscountTextField" layoutX="110.0" layoutY="12.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
     </children>
 </GridPane>

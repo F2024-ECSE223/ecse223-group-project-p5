@@ -25,10 +25,10 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Label alignment="CENTER_RIGHT" text="Select Item:" />
-                <Label alignment="CENTER_RIGHT" text="Quantity:" GridPane.columnIndex="2" />
-                <Label alignment="CENTER_RIGHT" text="Select Order" GridPane.columnIndex="4" />
-                <ChoiceBox fx:id="selectOrderItemChoiceBox" prefWidth="150.0" GridPane.columnIndex="5" GridPane.hgrow="ALWAYS" />
+                <Label alignment="CENTER_RIGHT" text="Select Item: " GridPane.valignment="CENTER" GridPane.halignment="RIGHT"/>
+                <Label alignment="CENTER_RIGHT" text="Quantity: " GridPane.columnIndex="2" GridPane.valignment="CENTER" GridPane.halignment="RIGHT"/>
+                <Label alignment="CENTER_RIGHT" text="Select Order: " GridPane.columnIndex="4" GridPane.valignment="CENTER" GridPane.halignment="RIGHT"/>
+                <ChoiceBox fx:id="selectInventoryItemChoiceBox" prefWidth="150.0" GridPane.columnIndex="5" GridPane.hgrow="ALWAYS" />
                 <TextField fx:id="itemQuantityTextField" layoutX="110.0" layoutY="12.0" GridPane.columnIndex="3" />
               <ChoiceBox fx:id="selectOrderChoiceBox" layoutX="510.0" layoutY="12.0" prefWidth="150.0" GridPane.columnIndex="1" />
             </children>
