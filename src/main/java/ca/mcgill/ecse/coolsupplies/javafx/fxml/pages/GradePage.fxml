@@ -35,8 +35,5 @@
       <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="102.0" text="Grade:" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" />
       <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="105.0" text="Grade:" GridPane.columnIndex="4" GridPane.hgrow="ALWAYS" />
    </children>
-<<<<<<< HEAD
 </GridPane>
-=======
-</GridPane>
->>>>>>> iteration4-7
+
