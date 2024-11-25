@@ -4,7 +4,7 @@ import java.util.List;
 import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet11Controller;
 import ca.mcgill.ecse.coolsupplies.controller.TOOrder;
 import ca.mcgill.ecse.coolsupplies.controller.TOOrderItem;
-import javafx.beans.property.SimpleStringProperty;
+import ca.mcgill.ecse.coolsupplies.javafx.fxml.CoolSuppliesFxmlView;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,53 +12,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class ViewIndividualOrderPageController {
-
-    @FXML
-    private TableColumn<TOOrder, String> authCodeColumn;
-
-    @FXML
-    private TableColumn<TOOrderItem, String> bundleNameColumn;
-
-    @FXML
-    private TableColumn<TOOrder, String> dateColumn;
-
-    @FXML
-    private TableColumn<TOOrderItem, String> itemDiscountColumn;
-
-    @FXML
-    private TableColumn<TOOrderItem, String> itemNameColumn;
-
-    @FXML
-    private TableColumn<TOOrderItem, String> itemPriceColumn;
-
-    @FXML
-    private TableColumn<TOOrderItem, String> itemQuantityColumn;
-
-    @FXML
-    private TableColumn<TOOrder, String> levelColumn;
 
     @FXML
     private TableView<TOOrder> orderInformationsTable;
 
     @FXML
-    private TableColumn<TOOrder, String> orderNumberColumn;
-
-    @FXML
     private TableView<TOOrderItem> orderSummaryTable;
-
-    @FXML
-    private TableColumn<TOOrder, String> parentColumn;
-
-    @FXML
-    private TableColumn<TOOrder, String> penAuthCodeColumn;
-
-    @FXML
-    private TableColumn<TOOrder, String> statusColumn;
-
-    @FXML
-    private TableColumn<TOOrder, String> studentColumn;
 
     @FXML
     private Button submitInput;
@@ -67,28 +29,25 @@ public class ViewIndividualOrderPageController {
     private TextField textInput;
 
     @FXML
-    private TableColumn<TOOrder, String> totalPriceColumn;
-
-    @FXML
     private void initialize() {
-    orderNumberColumn.setCellValueFactory(cellData -> new SimpleStringProperty(Integer.toString(cellData.getValue().getNumber())));
-    dateColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDate().toString()));
-    statusColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getStatus()));
-    authCodeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAuthorizationCode()));
-    penAuthCodeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPenaltyAuthorizationCode()));
-    levelColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getLevel()));
-    parentColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getParentEmail()));
-    studentColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getStudentName()));
+        orderInformationsTable.getColumns().add(createOrderTableColumn("Order Number", "orderNumber"));
+        orderInformationsTable.getColumns().add(createOrderTableColumn("Date", "date"));
+        orderInformationsTable.getColumns().add(createOrderTableColumn("Status", "status"));
+        orderInformationsTable.getColumns().add(createOrderTableColumn("Level", "level"));
+        orderInformationsTable.getColumns().add(createOrderTableColumn("Authorization Code", "authCode"));
+        orderInformationsTable.getColumns().add(createOrderTableColumn("Penality Authorization Code", "penAuthCode"));
+        orderInformationsTable.getColumns().add(createOrderTableColumn("Parent", "parent"));
+        orderInformationsTable.getColumns().add(createOrderTableColumn("Student", "student"));
 
-    itemNameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getItemName()));
-    itemQuantityColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getQuantity())));
-    itemPriceColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getPrice())));
-    itemDiscountColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getDiscount())));
-    bundleNameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getGradeBundleName()));
-    totalPriceColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getTotalPrice())));
-
-    orderInformationsTable.setItems(FXCollections.observableArrayList());
-    orderSummaryTable.setItems(FXCollections.observableArrayList());
+        orderSummaryTable.getColumns().add(createOrderItemTableColumn("Item Name", "itemName"));
+        orderSummaryTable.getColumns().add(createOrderItemTableColumn("Quantity", "quantity"));
+        orderSummaryTable.getColumns().add(createOrderItemTableColumn("Price", "price"));
+        orderSummaryTable.getColumns().add(createOrderItemTableColumn("Discount", "discount"));
+        orderSummaryTable.getColumns().add(createOrderItemTableColumn("Bundle Name", "bundleName"));
+        orderSummaryTable.getColumns().add(createOrderItemTableColumn("Total Price", "totalPrice"));
+    
+        CoolSuppliesFxmlView.getInstance().registerRefreshEvent(orderInformationsTable);
+        CoolSuppliesFxmlView.getInstance().registerRefreshEvent(orderSummaryTable);
     }
 
     @FXML
@@ -111,5 +70,17 @@ public class ViewIndividualOrderPageController {
             orderSummaryTable.setItems(FXCollections.observableArrayList(orderItems));
         }
     }
+
+    public static TableColumn<TOOrder, String> createOrderTableColumn(String header, String propertyName) {
+    TableColumn<TOOrder, String> column = new TableColumn<>(header);
+    column.setCellValueFactory(new PropertyValueFactory<>(propertyName));
+    return column;
+  }
+
+    public static TableColumn<TOOrderItem, String> createOrderItemTableColumn(String header, String propertyName) {
+    TableColumn<TOOrderItem, String> column = new TableColumn<>(header);
+    column.setCellValueFactory(new PropertyValueFactory<>(propertyName));
+    return column;
+  }
 
 }
