@@ -13,6 +13,9 @@ public class ViewAllOrdersPageController {
     @FXML
     private TableView<TOOrder> orderTable;
 
+   /* 
+    * @author Brian Yang 
+    */
     @FXML
     public void initialize(){
       orderTable.getColumns().add(createTableColumn("Parent", "parentEmail"));
@@ -29,6 +32,9 @@ public class ViewAllOrdersPageController {
       CoolSuppliesFxmlView.getInstance().registerRefreshEvent(orderTable);
     }
 
+   /* 
+    * @author Brian Yang 
+    */
     public static TableColumn<TOOrder, String> createTableColumn(String header,
     String propertyName) 
     {
