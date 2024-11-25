@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.VBox?>
@@ -46,5 +47,7 @@
             <Tab text="View All Orders" />
         </tabs>
       </TabPane>
+      <Separator prefWidth="200.0" />
+      <fx:include source="pages/ViewAllOrdersPage.fxml" />
    </children>
 </VBox>
