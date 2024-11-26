@@ -118,6 +118,9 @@ public class ViewUtils {
   public static ObservableList<TOOrder> getOrders(){
     return FXCollections.observableList(CoolSuppliesFeatureSet11Controller.viewAllOrders());
   }
+  public static ObservableList<TOOrder> getStartedOrders(){
+    return FXCollections.observableList(CoolSuppliesFeatureSet11Controller.viewAllOrders().stream().filter(order -> order.getStatus().equals("Started")).toList());
+  }
 
   public static ObservableList<String> getInventoryItems(){
     List<String> items = new ArrayList<>();
