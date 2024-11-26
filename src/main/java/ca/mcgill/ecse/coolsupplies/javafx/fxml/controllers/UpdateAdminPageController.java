@@ -1,15 +1,20 @@
-package main.java.ca.mcgill.ecse.coolsupplies.javafx.fxml.controllers;
+package ca.mcgill.ecse.coolsupplies.javafx.fxml.controllers;
+import static ca.mcgill.ecse.coolsupplies.javafx.fxml.controllers.ViewUtils.successful;
+import static ca.mcgill.ecse.coolsupplies.javafx.fxml.controllers.ViewUtils.callController;
 
-import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet1Controller;
+import ca.mcgill.ecse.coolsupplies.controller.*;
+import ca.mcgill.ecse.coolsupplies.javafx.fxml.CoolSuppliesFxmlView;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.PasswordField;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 
 public class UpdateAdminPageController {
 
     @FXML
-    private PasswordField newPasswordField;
+    private TextField newPasswordField;
 
     @FXML
     public void initialize() {
