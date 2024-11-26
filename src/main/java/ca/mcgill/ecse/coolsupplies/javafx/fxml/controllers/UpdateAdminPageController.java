@@ -4,6 +4,7 @@ import static ca.mcgill.ecse.coolsupplies.javafx.fxml.controllers.ViewUtils.call
 
 import ca.mcgill.ecse.coolsupplies.controller.*;
 import ca.mcgill.ecse.coolsupplies.javafx.fxml.CoolSuppliesFxmlView;
+import ca.mcgill.ecse.coolsupplies.javafx.fxml.controllers.ViewUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,6 +13,9 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 
 public class UpdateAdminPageController {
+
+    @FXML
+    private TextField adminEmailField;
 
     @FXML
     private TextField newPasswordField;
@@ -37,10 +41,9 @@ public class UpdateAdminPageController {
         ViewUtils.showError("Please input a valid password.");
       }
       else {
-        if (successful(CoolSuppliesFeatureSet1Controller.updateAdmin(newPassword))){
-          updateAdminPasswordClicked.setText("");
-          CoolSuppliesFxmlView.getInstance().refresh();
-        }
+        if (successful(CoolSuppliesFeatureSet1Controller.updateAdmin(newPassword))) {
+                newPasswordField.clear();
+                CoolSuppliesFxmlView.getInstance().refresh();
       }
     }
 
