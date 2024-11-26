@@ -20,19 +20,19 @@ public class UpdateAdminPageController {
     @FXML
     private TextField newPasswordField;
 
-    @FXML
-    public void initialize() {
-      newPasswordField.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e -> {
-        newPasswordField.clear();
-    });
+    // @FXML
+    // public void initialize() {
+    //   newPasswordField.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e -> {
+    //     newPasswordField.clear();
+    // });
 
-    adminEmailField.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e -> {
-        adminEmailField.setText("admin@cool.ca");
-        adminEmailField.setDisable(true);
-    });
+    // adminEmailField.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e -> {
+    //     adminEmailField.setText("admin@cool.ca");
+    //     adminEmailField.setDisable(true);
+    // });
 
-    CoolSuppliesFxmlView.getInstance().registerRefreshEvent(newPasswordField, adminEmailField);
-    }
+    // CoolSuppliesFxmlView.getInstance().registerRefreshEvent(newPasswordField, adminEmailField);
+    // }
 
     @FXML
     void updateAdminPasswordClicked(ActionEvent event) {
