@@ -37,7 +37,7 @@ public class ItemOrderPageController {
         } );
 
         selectOrderChoiceBox.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e ->{
-            selectOrderChoiceBox.setItems(ViewUtils.getOrders());
+            selectOrderChoiceBox.setItems(ViewUtils.getStartedOrders());
             selectOrderChoiceBox.setValue(null);
         });
         selectItemInOrderChoiceBox.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e -> {
@@ -72,6 +72,7 @@ public class ItemOrderPageController {
         else{
             if (successful(CoolSuppliesFeatureSet8Controller.addOrderItem(item, String.valueOf(quantity), String.valueOf(order.getNumber())))){
                 itemQuantityTextField.setText("");
+                updateItemChoices();
                 CoolSuppliesFxmlView.getInstance().refresh();
             }
         }
