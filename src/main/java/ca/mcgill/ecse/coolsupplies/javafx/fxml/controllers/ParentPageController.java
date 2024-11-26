@@ -1,0 +1,109 @@
+package main.java.ca.mcgill.ecse.coolsupplies.javafx.fxml.controllers;
+
+import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet1Controller;
+import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet2Controller;
+import ca.mcgill.ecse.coolsupplies.controller.TOParent;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+
+public class ParentPageController {
+
+    @FXML
+    private TextField parentEmailTextField;
+
+    @FXML
+    private TextField parentNameTextField;
+
+    @FXML
+    private PasswordField parentPasswordTextField;
+
+    @FXML
+    private TextField parentPhoneNumberTextField;
+
+    @FXML
+    private ChoiceBox<?> selectParentChoiceBox;
+
+    @FXML
+    public void initialize(){
+      selectParentChoiceBox.addEventHandler(CoolSuppliesFxmlView.REFRESH_EEVENT, e -> {
+        selectParentChoiceBox.setItems(viewUtils.getParents());
+        selectParentChoiceBox.setValue(null);
+      });
+
+      CoolSuppliesFxmlView.getInstance().registerRefreshEvent(
+        selectParentChoiceBox, 
+        parentEmailTextField, 
+        parentPasswordTextField, 
+        parentNameTextField, 
+        parentPhoneNumberTextField
+    );
+
+    }
+
+    @FXML
+    void registerParentClicked(ActionEvent event) {
+      String email = parentEmailTextField.getText();
+      String password = parentPasswordTextField.getText();
+      String name = parentNameTextField.getText();
+      String phoneNumber = parentPhoneNumberTextField.getText();
+
+      if (email == null || email.trim().isEmpty()) {
+          ViewUtils.showError("Please input a valid email address.");
+      } else if (password == null || password.trim().isEmpty()) {
+          ViewUtils.showError("Please input a valid password.");
+      } else if (name == null || name.trim().isEmpty()) {
+          ViewUtils.showError("Please input a valid name.");
+      } else if (phoneNumber == null || phoneNumber.trim().isEmpty()) {
+          ViewUtils.showError("Please input a valid phone number.");
+      } else {
+        if (successful(CoolSuppliesFeatureSet2Controller.addParent(email, password, name, phoneNumber))) {
+            parentEmailTextField.setText("");
+            parentPasswordTextField.setText("");
+            parentNameTextField.setText("");
+            parentPhoneNumberTextField.setText("");
+            CoolSuppliesFxmlView.getInstance().refresh();
+          }
+    }
+    }
+
+    @FXML
+    public void deleteParentClicked(ActionEvent event) {
+      TOParent parent = selectParentChoiceBox.getValue();
+      if (parent==null){
+        ViewUtils.showError("Please select a valid parent.");
+      } else{
+        callController(CoolSuppliesFeatureSet1Controller.deleteParent(parent.getEmail()));
+      }
+    }
+
+    @FXML
+    void updateParentClicked(ActionEvent event) {
+      TOParent parent = selectParentChoiceBox.getValue();
+      String email = parentEmailTextField.getText();
+      String newPassword = parentPasswordTextField.getText();
+      String newName = parentNameTextField.getText();
+      String newPhoneNumber = parentPhoneNumberTextField.getText();
+
+      if(parent == null){
+        ViewUtils.showError("Please select a valid parent.");
+      } else if (newPassword == null || newPassword.trim().isEmpty()) {
+        ViewUtils.showError("Please input a valid password.");
+      } else if (newName == null || newName.trim().isEmpty()) {
+        ViewUtils.showError("Please input a valid name.");
+      } else if (newPhoneNumber == null || newPhoneNumber.trim().isEmpty()) {
+        ViewUtils.showError("Please input a valid phone number.");
+      } else {
+        if (successful(CoolSuppliesFeatureSet1Controller.updateParent(email, newPassword, newName, newPhoneNumber))) {
+          parentEmailTextField.setText("");  
+          parentPasswordTextField.setText("");
+          parentNameTextField.setText("");
+          parentPhoneNumberTextField.setText("");
+          CoolSuppliesFxmlView.getInstance().refresh();
+        }
+      }
+    }
+
+}
