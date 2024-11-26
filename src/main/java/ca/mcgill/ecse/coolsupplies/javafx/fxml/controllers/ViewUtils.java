@@ -1,7 +1,9 @@
 package ca.mcgill.ecse.coolsupplies.javafx.fxml.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet13Controller;
+import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet11Controller;
 import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet1Controller;
 import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet2Controller;
 import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet3Controller;
@@ -13,6 +15,7 @@ import ca.mcgill.ecse.coolsupplies.controller.TOBundleItem;
 import ca.mcgill.ecse.coolsupplies.controller.TOGrade;
 import ca.mcgill.ecse.coolsupplies.controller.TOGradeBundle;
 import ca.mcgill.ecse.coolsupplies.controller.TOItem;
+import ca.mcgill.ecse.coolsupplies.controller.TOOrder;
 import ca.mcgill.ecse.coolsupplies.controller.TOOrderItem;
 import ca.mcgill.ecse.coolsupplies.controller.TOParent;
 import ca.mcgill.ecse.coolsupplies.controller.TOStudent;
@@ -112,5 +115,21 @@ public class ViewUtils {
     return FXCollections.observableList(CoolSuppliesFeatureSet7Controller.getGrades());
   }
 
+  public static ObservableList<TOOrder> getOrders(){
+    return FXCollections.observableList(CoolSuppliesFeatureSet11Controller.viewAllOrders());
+  }
+  public static ObservableList<TOOrder> getStartedOrders(){
+    return FXCollections.observableList(CoolSuppliesFeatureSet11Controller.viewAllOrders().stream().filter(order -> order.getStatus().equals("Started")).toList());
+  }
 
+  public static ObservableList<String> getInventoryItems(){
+    List<String> items = new ArrayList<>();
+    for (TOItem item : CoolSuppliesFeatureSet3Controller.getItems()) {
+      items.add(item.getName());
+    }
+    for (TOGradeBundle bundle : CoolSuppliesFeatureSet4Controller.getBundles()) {
+      items.add(bundle.getName());
+    }
+    return FXCollections.observableList(items);
+  }
 }

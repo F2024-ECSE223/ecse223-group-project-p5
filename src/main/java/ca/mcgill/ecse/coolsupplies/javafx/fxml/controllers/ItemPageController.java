@@ -24,61 +24,48 @@ public class ItemPageController {
     private Button addItemButton;
 
     @FXML
-    private ChoiceBox<TOItem> deleteItemChoiceBox;
+    private ChoiceBox<TOItem> ItemChoiceBox;
 
     @FXML
-    private ChoiceBox<TOItem> updateItemChoiceBox;
+    private TextField ItemPriceTextField;
 
     @FXML
-    private TextField addItemNameTextField;
-
-    @FXML
-    private TextField updateItemPriceTextField;
-
-
-    @FXML
-    private TextField addItemPriceTextField;
-
-    @FXML
-    private TextField updateItemNameTextField;
+    private TextField ItemNameTextField;
     
 
 
     
     
+
 /**
- * Initializes the ItemPageController by setting up refresh event handlers 
- * for the updateItemChoiceBox and deleteItemChoiceBox. These handlers 
- * update the items in the choice boxes upon receiving a refresh event. 
- * Additionally, registers the choice boxes to listen for refresh events 
- * from the CoolSuppliesFxmlView.
+ * Initializes the item page controller by setting up the ItemChoiceBox.
+ * It adds an event handler to update the item list and clears the selection
+ * when a refresh event is triggered. It also registers the ItemChoiceBox to
+ * receive refresh events from the CoolSuppliesFxmlView.
  * @author Jiaduo Xing
  */
      @FXML
      public void initialize(){
-      updateItemChoiceBox.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e -> {
-        updateItemChoiceBox.setItems(ViewUtils.getItems());
-        updateItemChoiceBox.setValue(null);
+      ItemChoiceBox.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e -> {
+        ItemChoiceBox.setItems(ViewUtils.getItems());
+        ItemChoiceBox.setValue(null);
        } );
     	 
-    	 deleteItemChoiceBox.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e -> {
-        deleteItemChoiceBox.setItems(ViewUtils.getItems());
-        deleteItemChoiceBox.setValue(null);
-       } );
-
-       CoolSuppliesFxmlView.getInstance().registerRefreshEvent(updateItemChoiceBox, deleteItemChoiceBox);
+      
+       CoolSuppliesFxmlView.getInstance().registerRefreshEvent(ItemChoiceBox);
      }
 
    
 
-    /**
-     * Handles the add item button click event. Retrieves the item name and price from the UI, and calls the addItem method of the CoolSuppliesFeatureSet3Controller. If the item is successfully added, refreshes the UI.
-     * @author Jiaduo Xing
-     */
+   
+/**
+ * Handles the add item button click event. Retrieves the item name and price from the UI, and calls the addItem method of the CoolSuppliesFeatureSet3Controller. If the item is successfully added, refreshes the UI.
+ * @author Jiaduo Xing
+ */
     @FXML
     void addItemClicked(ActionEvent event) {
-    	String itemName = addItemNameTextField.getText();
-    	String itemPrice = addItemPriceTextField.getText();
+    	String itemName = ItemNameTextField.getText();
+    	String itemPrice = ItemPriceTextField.getText();
     	if (itemName == null || itemName.trim().isEmpty()){
     	      ViewUtils.showError("Please input a valid item name.");
     	}
@@ -100,32 +87,30 @@ public class ItemPageController {
      */
     @FXML
     void deleteItemClicked(ActionEvent event) {
-    	TOItem item = deleteItemChoiceBox.getValue();
+    	TOItem item = ItemChoiceBox.getValue();
         if (item == null){
-          ViewUtils.showError("Please select a valid item name.");
+          ViewUtils.showError("Please select an item.");
         }
-    /**
-     * Handles the update item button click event. Retrieves the selected item name and price from the UI, and calls the updateItem method of the CoolSuppliesFeatureSet3Controller. If the item is successfully updated, refreshes the UI.
-     * @author Jiaduo Xing
-     */
+  
         else{
           callController(CoolSuppliesFeatureSet3Controller.deleteItem(item.getName()));
         }
     }
 
    
+  
     /**
-     * Handles the update item button click event. Retrieves the selected item name and new name and price from the UI, and calls the updateItem method of the CoolSuppliesFeatureSet3Controller. If the item is successfully updated, refreshes the UI.
+     * Handles the update item button click event. Retrieves the selected item name from the UI, and retrieves the new item name and price from the UI. If the item is successfully updated, refreshes the UI.
      * @author Jiaduo Xing
      */
     @FXML
     void updateItemClicked(ActionEvent event) {
-    	TOItem item = deleteItemChoiceBox.getValue();
-    	String newNameString = updateItemNameTextField.getText();
-    	String newPriceString = updateItemPriceTextField.getText();
+    	TOItem item = ItemChoiceBox.getValue();
+    	String newNameString = ItemNameTextField.getText();
+    	String newPriceString = ItemPriceTextField.getText();
     	
     	if (item == null) {
-    		ViewUtils.showError("Please select a valid item name.");
+    		ViewUtils.showError("Please select an item.");
     	}
     	else if (newNameString == null || newNameString.trim().isEmpty()){
     		ViewUtils.showError("Please input a valid item name.");
