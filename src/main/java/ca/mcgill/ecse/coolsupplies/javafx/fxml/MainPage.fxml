@@ -40,7 +40,10 @@
                     <fx:include source="pages/ItemOrderPage.fxml" />
                 </content>
             </Tab>
-            <Tab text="Pay Order" />
+            <Tab text="Pay Order">
+               <content>
+                  <fx:include source="pages/PayOrderPage.fxml" />
+               </content></Tab>
             <Tab text="View Individual Order" />
             <Tab text="Start School Year">
                <content>
@@ -56,6 +59,11 @@
       <Separator prefWidth="200.0" />
       <TabPane prefHeight="216.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
+            <Tab text="View Individual Order">
+               <graphic>
+                  <fx:include source="pages/ViewIndividualOrderPage.fxml" />
+               </graphic>
+            </Tab>
           <Tab text="View All Orders">
                <content>
                   <fx:include source="pages/ViewAllOrdersPage.fxml" />
