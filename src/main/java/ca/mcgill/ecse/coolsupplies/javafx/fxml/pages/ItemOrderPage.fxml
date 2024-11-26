@@ -29,9 +29,9 @@
                 <Label alignment="CENTER_RIGHT" text="Select Item: " GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
                 <Label alignment="CENTER_RIGHT" text="Quantity: " GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
                 <Label alignment="CENTER_RIGHT" text="Select Order: " GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
-                <ChoiceBox fx:id="selectInventoryItemChoiceBox" prefWidth="150.0" GridPane.columnIndex="5" GridPane.hgrow="ALWAYS" />
+                <ChoiceBox fx:id="selectInventoryItemChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" />
                 <TextField fx:id="itemQuantityTextField" layoutX="110.0" layoutY="12.0" GridPane.columnIndex="3" />
-              <ChoiceBox fx:id="selectOrderChoiceBox" onAction="#updateItemChoices" layoutX="510.0" layoutY="12.0" prefWidth="150.0" GridPane.columnIndex="1" />
+                <ChoiceBox fx:id="selectOrderChoiceBox" onAction="#updateItemChoices" layoutX="510.0" layoutY="12.0" prefWidth="150.0" GridPane.columnIndex="5" />
             </children>
         </GridPane>
       <GridPane alignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
