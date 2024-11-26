@@ -4,6 +4,8 @@ import static ca.mcgill.ecse.coolsupplies.javafx.fxml.controllers.ViewUtils.call
 
 import ca.mcgill.ecse.coolsupplies.controller.*;
 import ca.mcgill.ecse.coolsupplies.javafx.fxml.CoolSuppliesFxmlView;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
@@ -20,6 +22,9 @@ public class ItemOrderPageController {
     @FXML
     private TextField itemQuantityTextField;
 
+    @FXML
+    private ChoiceBox<TOOrderItem> selectItemInOrderChoiceBox;
+
     /*
      * @author Doddy Yang Qiu
      */
@@ -35,7 +40,10 @@ public class ItemOrderPageController {
             selectOrderChoiceBox.setItems(ViewUtils.getOrders());
             selectOrderChoiceBox.setValue(null);
         });
-
+        selectItemInOrderChoiceBox.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e -> {
+            selectItemInOrderChoiceBox.setItems(FXCollections.observableArrayList());
+            selectItemInOrderChoiceBox.setValue(null);
+        } );
         CoolSuppliesFxmlView.getInstance().registerRefreshEvent(selectInventoryItemChoiceBox, selectOrderChoiceBox);
     }
 
@@ -74,7 +82,7 @@ public class ItemOrderPageController {
      */
     @FXML
     public void updateItemInOrderClicked(ActionEvent event) {
-        String item = selectInventoryItemChoiceBox.getValue();
+        String item = selectItemInOrderChoiceBox.getValue().getItemName();
         TOOrder order = selectOrderChoiceBox.getValue();
         int quantity;
         try {
@@ -85,7 +93,7 @@ public class ItemOrderPageController {
             return;
         }
         if(item==null || item.isEmpty()){
-            ViewUtils.showError("Please select a valid item.");
+            ViewUtils.showError("Please select a valid item from the order.");
         }
         else if(order==null){
             ViewUtils.showError("Please select a valid order.");
@@ -103,15 +111,24 @@ public class ItemOrderPageController {
      */
     @FXML
     public void deleteItemFromOrderClicked(ActionEvent event) {
-        String item = selectInventoryItemChoiceBox.getValue();
+        String item = selectItemInOrderChoiceBox.getValue().getItemName();
         TOOrder order = selectOrderChoiceBox.getValue();
         if(item==null || item.isEmpty()){
-            ViewUtils.showError("Please select a valid item.");
+            ViewUtils.showError("Please select a valid item from the order.");
         }
         else if(order==null){
             ViewUtils.showError("Please select a valid order.");
         }else{
             callController(CoolSuppliesFeatureSet9Controller.deleteOrderItem(item, String.valueOf(order.getNumber())));
+        }
+    }
+    @FXML
+    public void updateItemChoices()
+    {
+        TOOrder order = selectOrderChoiceBox.getValue();
+        if(order != null){
+            selectItemInOrderChoiceBox.setItems(ViewUtils.getOrderItems(order.getNumber()));
+            selectItemInOrderChoiceBox.setValue(null);
         }
     }
 }
