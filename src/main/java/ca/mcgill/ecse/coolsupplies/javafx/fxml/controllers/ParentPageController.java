@@ -26,12 +26,12 @@ public class ParentPageController {
     private TextField parentPhoneNumberTextField;
 
     @FXML
-    private ChoiceBox<?> selectParentChoiceBox;
+    private ChoiceBox<TOParent> selectParentChoiceBox;
 
     @FXML
     public void initialize(){
-      selectParentChoiceBox.addEventHandler(CoolSuppliesFxmlView.REFRESH_EEVENT, e -> {
-        selectParentChoiceBox.setItems(viewUtils.getParents());
+      selectParentChoiceBox.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e -> {
+        selectParentChoiceBox.setItems(ViewUtils.getParents());
         selectParentChoiceBox.setValue(null);
       });
 
@@ -61,7 +61,7 @@ public class ParentPageController {
       } else if (phoneNumber == null || phoneNumber.trim().isEmpty()) {
           ViewUtils.showError("Please input a valid phone number.");
       } else {
-        if (successful(CoolSuppliesFeatureSet2Controller.addParent(email, password, name, phoneNumber))) {
+        if (successful(CoolSuppliesFeatureSet1Controller.addParent(email, password, name, Integer.parseInt(phoneNumber)))) {
             parentEmailTextField.setText("");
             parentPasswordTextField.setText("");
             parentNameTextField.setText("");
@@ -98,7 +98,7 @@ public class ParentPageController {
       } else if (newPhoneNumber == null || newPhoneNumber.trim().isEmpty()) {
         ViewUtils.showError("Please input a valid phone number.");
       } else {
-        if (successful(CoolSuppliesFeatureSet1Controller.updateParent(email, newPassword, newName, newPhoneNumber))) {
+        if (successful(CoolSuppliesFeatureSet1Controller.updateParent(email, newPassword, newName, Integer.parseInt(newPhoneNumber)))) {
           parentEmailTextField.setText("");  
           parentPasswordTextField.setText("");
           parentNameTextField.setText("");
