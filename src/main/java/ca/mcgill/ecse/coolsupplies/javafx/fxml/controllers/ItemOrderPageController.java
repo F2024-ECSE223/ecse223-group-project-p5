@@ -82,7 +82,7 @@ public class ItemOrderPageController {
      */
     @FXML
     public void updateItemInOrderClicked(ActionEvent event) {
-        String item = selectItemInOrderChoiceBox.getValue() == null ? selectInventoryItemChoiceBox.getValue() : selectItemInOrderChoiceBox.getValue().getItemName();
+        String item = selectItemInOrderChoiceBox.getValue().getItemName();
         TOOrder order = selectOrderChoiceBox.getValue();
         int quantity;
         try {
@@ -93,7 +93,7 @@ public class ItemOrderPageController {
             return;
         }
         if(item==null || item.isEmpty()){
-            ViewUtils.showError("Please select a valid item.");
+            ViewUtils.showError("Please select a valid item from the order.");
         }
         else if(order==null){
             ViewUtils.showError("Please select a valid order.");
@@ -111,10 +111,10 @@ public class ItemOrderPageController {
      */
     @FXML
     public void deleteItemFromOrderClicked(ActionEvent event) {
-        String item = selectItemInOrderChoiceBox.getValue() == null ? selectInventoryItemChoiceBox.getValue() : selectItemInOrderChoiceBox.getValue().getItemName();
+        String item = selectItemInOrderChoiceBox.getValue().getItemName();
         TOOrder order = selectOrderChoiceBox.getValue();
         if(item==null || item.isEmpty()){
-            ViewUtils.showError("Please select a valid item.");
+            ViewUtils.showError("Please select a valid item from the order.");
         }
         else if(order==null){
             ViewUtils.showError("Please select a valid order.");
