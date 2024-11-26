@@ -9,8 +9,16 @@
    <children>
       <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-            <Tab text="School Admin" />
+          <Tab text="School Admin" />
+               <content>
+                  <fx:include source="pages/UpdateAdminPage.fxml" />
+                </content>
+          </Tab>
           <Tab text="Parent" />
+                <content>
+                  <fx:include source="pages/ParentPage.fxml" />
+                </content>
+          </Tab>
           <Tab text="Student">
                <content>
                   <fx:include source="pages/StudentPage.fxml" />
