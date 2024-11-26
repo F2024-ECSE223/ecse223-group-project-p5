@@ -10,6 +10,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
+/**
+ * This class handles the payment of orders
+ * @author Baptiste Didier
+ */
 public class PayOrderPageController {
 
     @FXML
@@ -27,6 +31,10 @@ public class PayOrderPageController {
     @FXML
     private TextField penAuthCodeTextField;
 
+    /**
+     * Updates the order based on its current state and the authorization code
+     * @param event The click of the user
+     */
     @FXML
     void PayForOrderClicked(ActionEvent event) {
       String orderNum = orderNumberTextField.getText();
@@ -57,6 +65,10 @@ public class PayOrderPageController {
       }
     }
 
+    /**
+     * Updates the order based on its current state and the authorization codes
+     * @param event The click of the user
+     */
     @FXML
     void payPenalityClicked(ActionEvent event) {
       String orderNum = orderNumberTextField.getText();

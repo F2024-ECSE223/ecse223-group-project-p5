@@ -13,6 +13,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
+/**
+ * This class handles the View Controller for the viewing of individual orders.
+ * @author Baptiste Didier
+ */
 public class ViewIndividualOrderPageController {
 
     @FXML
@@ -69,6 +73,9 @@ public class ViewIndividualOrderPageController {
     @FXML
     private TableColumn<TOOrder, String> totalPriceColumn;
 
+    /**
+     * Initializes the user interface for viewing orders
+     */
     @FXML
     private void initialize() {
     orderNumberColumn.setCellValueFactory(cellData -> new SimpleStringProperty(Integer.toString(cellData.getValue().getNumber())));
@@ -88,6 +95,10 @@ public class ViewIndividualOrderPageController {
     bundleNameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getGradeBundleName()));
     }
 
+    /**
+     * Shows the order when a correct number is given
+     * @param event The click of the user
+     */
     @FXML
     void showOrder(ActionEvent event) {
         String orderNumber = textInput.getText().trim();
