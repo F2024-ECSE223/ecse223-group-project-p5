@@ -28,25 +28,27 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 
+
+
 public class StudentParentPageController {
 
     @FXML
-    private ChoiceBox<TOParent> addSelectParentChoiceBox;
+    private ChoiceBox<TOParent> selectParentChoiceBox;
 
     @FXML
-    private ChoiceBox<TOStudent> addSelectStudentChoiceBox;
+    private ChoiceBox<TOStudent> selectStudentChoiceBox;
 
     @FXML
     private Button addStudentParentButton;
 
     @FXML
-    private ChoiceBox<TOParent> removeSelectParentChoiceBox;
-
-    @FXML
-    private ChoiceBox<TOStudent> removeSelectStudentChoiceBox;
+    private ChoiceBox<TOStudent> selectStudentParentChoiceBox;
 
     @FXML
     private Button removeStudentParentButton;
+
+    @FXML
+    private Button setParentButton;
 
     /*
      * @author Suthiesan Subramaniam
@@ -54,27 +56,22 @@ public class StudentParentPageController {
     @FXML
   public void initialize(){
 
-    addSelectParentChoiceBox.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e ->{
-      addSelectParentChoiceBox.setItems(ViewUtils.getParents());
-      addSelectParentChoiceBox.setValue(null);
+    selectParentChoiceBox.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e ->{
+      selectParentChoiceBox.setItems(ViewUtils.getParents());
+      selectParentChoiceBox.setValue(null);
     } );
 
-    addSelectStudentChoiceBox.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e ->{
-      addSelectStudentChoiceBox.setItems(ViewUtils.getStudents());
-      addSelectStudentChoiceBox.setValue(null);
+    selectStudentChoiceBox.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e ->{
+      selectStudentChoiceBox.setItems(ViewUtils.getStudents());
+      selectStudentChoiceBox.setValue(null);
     } );
 
-    removeSelectParentChoiceBox.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e ->{
-      removeSelectParentChoiceBox.setItems(ViewUtils.getParents());
-      removeSelectParentChoiceBox.setValue(null);
+    selectStudentParentChoiceBox.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e ->{
+      selectStudentParentChoiceBox.setItems(FXCollections.emptyObservableList());
+      selectStudentParentChoiceBox.setValue(null);
     } );
 
-    removeSelectStudentChoiceBox.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e ->{
-      removeSelectStudentChoiceBox.setItems(ViewUtils.getStudents());
-      removeSelectStudentChoiceBox.setValue(null);
-    } );
-
-    CoolSuppliesFxmlView.getInstance().registerRefreshEvent(addSelectParentChoiceBox, addSelectStudentChoiceBox, removeSelectParentChoiceBox, removeSelectStudentChoiceBox);
+    CoolSuppliesFxmlView.getInstance().registerRefreshEvent(selectParentChoiceBox, selectStudentChoiceBox, selectStudentParentChoiceBox);
    }
 
    /*
@@ -82,8 +79,8 @@ public class StudentParentPageController {
      */
    @FXML
     void addStudentParentClicked(ActionEvent event) {
-      TOParent parent = addSelectParentChoiceBox.getValue();
-      TOStudent student = addSelectStudentChoiceBox.getValue();
+      TOParent parent = selectParentChoiceBox.getValue();
+      TOStudent student = selectStudentChoiceBox.getValue();
       if (parent == null) {
         ViewUtils.showError("Please select a valid parent");
       }
@@ -91,6 +88,7 @@ public class StudentParentPageController {
         ViewUtils.showError("Please select a valid student");
       } else {
         callController(CoolSuppliesFeatureSet6Controller.addStudentToParent(student.getName(), parent.getEmail()));
+        CoolSuppliesFxmlView.getInstance().refresh();
       }
     }
 
@@ -98,9 +96,19 @@ public class StudentParentPageController {
      * @author Suthiesan Subramaniam
      */
     @FXML
+    void setParentClicked(ActionEvent event) {
+      TOParent parent = selectParentChoiceBox.getValue();
+      selectStudentParentChoiceBox.setItems(ViewUtils.getStudentsOfParent(parent.getEmail()));
+      selectStudentParentChoiceBox.setValue(null);
+    }
+
+    /*
+     * @author Suthiesan Subramaniam
+     */
+    @FXML
     void removeStudentParentClicked(ActionEvent event) {
-      TOParent parent = removeSelectParentChoiceBox.getValue();
-      TOStudent student = removeSelectStudentChoiceBox.getValue();
+      TOParent parent = selectParentChoiceBox.getValue();
+      TOStudent student = selectStudentParentChoiceBox.getValue();
       if (parent == null) {
         ViewUtils.showError("Please select a valid parent");
       }

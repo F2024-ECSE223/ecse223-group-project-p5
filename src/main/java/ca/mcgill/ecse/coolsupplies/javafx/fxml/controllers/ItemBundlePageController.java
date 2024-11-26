@@ -31,93 +31,63 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 
+
 public class ItemBundlePageController {
 
     @FXML
-    private ChoiceBox<TOItem> addBundleItemChoiceBox;
+    private ChoiceBox<TOItem> itemChoiceBox;
 
     @FXML
-    private ChoiceBox<TOGradeBundle> addGradeBundleChoiceBox;
+    private ChoiceBox<TOGradeBundle> gradeBundleChoiceBox;
+
+    @FXML
+    private TextField itemQuantityTextField;
+
+    @FXML
+    private ChoiceBox<String> itemTypeChoiceBox;
+
+    @FXML
+    private ChoiceBox<TOBundleItem> bundleItemChoiceBox;
 
     @FXML
     private Button addItemButton;
-
-    @FXML
-    private TextField addItemQuantityTextField;
-
-    @FXML
-    private ChoiceBox<String> addItemTypeChoiceBox;
-
-    @FXML
-    private ChoiceBox<TOBundleItem> deleteBundleItemChoiceBox;
-
-    @FXML
-    private ChoiceBox<TOGradeBundle> deleteGradeBundleChoiceBox;
-
+    
     @FXML
     private Button deleteItemButton;
 
     @FXML
-    private ChoiceBox<TOBundleItem> updateBundleItemChoiceBox;
+    private Button updateItemButton;
 
     @FXML
-    private ChoiceBox<TOGradeBundle> updateGradeBundleChoiceBox;
+    private Button setGradeBundleButton;
 
-    @FXML
-    private Button updateItemClicked;
-
-    @FXML
-    private TextField updateItemQuantityTextField;
-
-    @FXML
-    private ChoiceBox<String> updateItemTypeChoiceBox;
 
     /*
      * @author Suthiesan Subramaniam
      */
     @FXML
   public void initialize(){
-    addBundleItemChoiceBox.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e ->{
-      addBundleItemChoiceBox.setItems(ViewUtils.getItems());
-      addBundleItemChoiceBox.setValue(null);
+    itemChoiceBox.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e ->{
+      itemChoiceBox.setItems(ViewUtils.getItems());
+      itemChoiceBox.setValue(null);
     } );
 
-    updateBundleItemChoiceBox.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e ->{
-      updateBundleItemChoiceBox.setItems(ViewUtils.getBundleItems(null));
-      updateBundleItemChoiceBox.setValue(null);
+    bundleItemChoiceBox.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e ->{
+      bundleItemChoiceBox.setItems(FXCollections.emptyObservableList());
+      bundleItemChoiceBox.setValue(null);
     } );
 
-    deleteBundleItemChoiceBox.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e ->{
-      deleteBundleItemChoiceBox.setItems(ViewUtils.getBundleItems(null));
-      deleteBundleItemChoiceBox.setValue(null);
-    } );
-
-
-    addGradeBundleChoiceBox.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e ->{
-      addGradeBundleChoiceBox.setItems(ViewUtils.getBundles());
-      addGradeBundleChoiceBox.setValue(null);
-    });
-
-    updateGradeBundleChoiceBox.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e ->{
-      updateGradeBundleChoiceBox.setItems(ViewUtils.getBundles());
-      updateGradeBundleChoiceBox.setValue(null);
-    });
-
-    deleteGradeBundleChoiceBox.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e ->{
-      deleteGradeBundleChoiceBox.setItems(ViewUtils.getBundles());
-      deleteGradeBundleChoiceBox.setValue(null);
+    gradeBundleChoiceBox.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e ->{
+      gradeBundleChoiceBox.setItems(ViewUtils.getBundles());
+      gradeBundleChoiceBox.setValue(null);
     });
 
 
     ObservableList<String> purchaseLevels = FXCollections.observableArrayList("Mandatory","Recommended","Optional");
-    addItemTypeChoiceBox.setItems(purchaseLevels);
-    addItemTypeChoiceBox.setValue(purchaseLevels.get(0));
+    itemTypeChoiceBox.setItems(purchaseLevels);
+    itemTypeChoiceBox.setValue(purchaseLevels.get(0));
 
-    ObservableList<String> purchaseLevelss = FXCollections.observableArrayList("Mandatory","Recommended","Optional");
-    updateItemTypeChoiceBox.setItems(purchaseLevelss);
-    updateItemTypeChoiceBox.setValue(purchaseLevelss.get(0));
-
-    CoolSuppliesFxmlView.getInstance().registerRefreshEvent(addBundleItemChoiceBox, addGradeBundleChoiceBox, deleteGradeBundleChoiceBox, deleteBundleItemChoiceBox, updateBundleItemChoiceBox, updateGradeBundleChoiceBox);
+    CoolSuppliesFxmlView.getInstance().registerRefreshEvent(bundleItemChoiceBox, gradeBundleChoiceBox, itemChoiceBox);
    }
 
     /*
@@ -126,10 +96,10 @@ public class ItemBundlePageController {
     @FXML
     void addItemClicked(ActionEvent event) {
       try {
-        TOGradeBundle gradeBundle = addGradeBundleChoiceBox.getValue();
-        TOItem item = addBundleItemChoiceBox.getValue();
-        int quantity = Integer.parseInt(addItemQuantityTextField.getText());
-        String itemType = addItemTypeChoiceBox.getValue();
+        TOGradeBundle gradeBundle = gradeBundleChoiceBox.getValue();
+        TOItem item = itemChoiceBox.getValue();
+        int quantity = Integer.parseInt(itemQuantityTextField.getText());
+        String itemType = itemTypeChoiceBox.getValue();
         var error = "";
         if (gradeBundle == null){
           error += "Invalid gradeBundle";
@@ -144,7 +114,8 @@ public class ItemBundlePageController {
           ViewUtils.showError(error);
         }else{
           if (successful(CoolSuppliesFeatureSet5Controller.addBundleItem(quantity, itemType, item.getName(), gradeBundle.getName()))){
-            addItemQuantityTextField.setText("");
+            itemQuantityTextField.setText("");
+            CoolSuppliesFxmlView.getInstance().refresh();
           }
         }
       }catch(NumberFormatException e){
@@ -156,9 +127,19 @@ public class ItemBundlePageController {
      * @author Suthiesan Subramaniam
      */
     @FXML
+    void setGradeBundleClicked(ActionEvent event) {
+      TOGradeBundle gradeBundle = gradeBundleChoiceBox.getValue();
+      bundleItemChoiceBox.setItems(ViewUtils.getBundleItems(gradeBundle.getName()));
+      bundleItemChoiceBox.setValue(null);
+    }
+
+    /*
+     * @author Suthiesan Subramaniam
+     */
+    @FXML
     void deleteItemClicked(ActionEvent event) {
-      TOGradeBundle gradeBundle = deleteGradeBundleChoiceBox.getValue();
-      TOBundleItem bundleItem = deleteBundleItemChoiceBox.getValue();
+      TOGradeBundle gradeBundle = gradeBundleChoiceBox.getValue();
+      TOBundleItem bundleItem = bundleItemChoiceBox.getValue();
       if (gradeBundle == null) {
         ViewUtils.showError("Please select a valid grade bundle");
       }
@@ -169,7 +150,6 @@ public class ItemBundlePageController {
       }
 
       }
-    
 
     /*
      * @author Suthiesan Subramaniam
@@ -177,10 +157,10 @@ public class ItemBundlePageController {
     @FXML
     void updateItemClicked(ActionEvent event) {
       try {
-        TOGradeBundle gradeBundle = updateGradeBundleChoiceBox.getValue();
-        TOBundleItem item = updateBundleItemChoiceBox.getValue();
-        int newQuantity = Integer.parseInt(addItemQuantityTextField.getText());
-        String newItemType = addItemTypeChoiceBox.getValue();
+        TOGradeBundle gradeBundle = gradeBundleChoiceBox.getValue();
+        TOBundleItem item = bundleItemChoiceBox.getValue();
+        int newQuantity = Integer.parseInt(itemQuantityTextField.getText());
+        String newItemType = itemTypeChoiceBox.getValue();
         var error = "";
         if (gradeBundle == null){
           error += "Invalid grade";
@@ -195,7 +175,8 @@ public class ItemBundlePageController {
           ViewUtils.showError(error);
         }else{
           if (successful(CoolSuppliesFeatureSet5Controller.updateBundleItem(item.getItemName(), gradeBundle.getName(), newQuantity, newItemType))){
-            addItemQuantityTextField.setText("");
+            itemQuantityTextField.setText("");
+            CoolSuppliesFxmlView.getInstance().refresh();
           }
         }
       }catch(NumberFormatException e){
