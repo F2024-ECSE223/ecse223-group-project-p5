@@ -23,7 +23,7 @@ public class ItemOrderPageController {
     private TextField itemQuantityTextField;
 
     @FXML
-    private ChoiceBox<TOOrderItem> selectItemInOrderChoiceBox;
+    private ChoiceBox<String> selectItemInOrderChoiceBox;
 
     /*
      * @author Doddy Yang Qiu
@@ -83,7 +83,7 @@ public class ItemOrderPageController {
      */
     @FXML
     public void updateItemInOrderClicked(ActionEvent event) {
-        String item = selectItemInOrderChoiceBox.getValue().getItemName();
+        String item = selectItemInOrderChoiceBox.getValue();
         TOOrder order = selectOrderChoiceBox.getValue();
         int quantity;
         try {
@@ -112,7 +112,7 @@ public class ItemOrderPageController {
      */
     @FXML
     public void deleteItemFromOrderClicked(ActionEvent event) {
-        String item = selectItemInOrderChoiceBox.getValue().getItemName();
+        String item = selectItemInOrderChoiceBox.getValue();
         TOOrder order = selectOrderChoiceBox.getValue();
         if(item==null || item.isEmpty()){
             ViewUtils.showError("Please select a valid item from the order.");
@@ -128,7 +128,7 @@ public class ItemOrderPageController {
     {
         TOOrder order = selectOrderChoiceBox.getValue();
         if(order != null){
-            selectItemInOrderChoiceBox.setItems(ViewUtils.getOrderItems(order.getNumber()));
+            selectItemInOrderChoiceBox.setItems(ViewUtils.getInventoryItemsOfOrder(order.getNumber()));
             selectItemInOrderChoiceBox.setValue(null);
         }
     }

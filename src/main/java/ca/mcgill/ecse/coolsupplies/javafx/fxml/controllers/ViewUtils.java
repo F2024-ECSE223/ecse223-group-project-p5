@@ -132,4 +132,9 @@ public class ViewUtils {
     }
     return FXCollections.observableList(items);
   }
+
+  public static ObservableList<String> getInventoryItemsOfOrder(int orderNumber){
+    return FXCollections.observableList(CoolSuppliesFeatureSet13Controller.getInventoryItemsOfOrder(orderNumber));
+  }
+  
 }

@@ -57,7 +57,9 @@ public class CoolSuppliesFeatureSet6Controller {
     }
 
     try {
-      parent.addStudent(student);
+      if(!parent.addStudent(student)){
+        return "The student already exists in the parent";
+      }
       CoolsuppliesPersistence.save();
     } 
     catch (RuntimeException e) {

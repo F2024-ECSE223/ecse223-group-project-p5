@@ -91,4 +91,16 @@ public class CoolSuppliesFeatureSet13Controller {
     return parent.getEmail();
   }
 
+  public static List<String> getInventoryItemsOfOrder(int orderNumber){
+    List<String> inventoryItems= new ArrayList<String>();
+    Order order = Order.getWithNumber(orderNumber);
+    if (order == null){
+      return inventoryItems;
+    }
+    for (OrderItem orderItem :order.getOrderItems()){
+      inventoryItems.add(orderItem.getItem().getName());
+    }
+    return inventoryItems;
+  }
+
 }
