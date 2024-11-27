@@ -39,7 +39,6 @@ public class PayOrderPageController {
     void PayForOrderClicked(ActionEvent event) {
       String orderNum = orderNumberTextField.getText();
       String auth = authCodeTextField.getText();
-      String penAuth = penAuthCodeTextField.getText();
       TOOrder order = CoolSuppliesFeatureSet11Controller.viewOrder(orderNum);
 
       if (order == null) {
@@ -52,16 +51,9 @@ public class PayOrderPageController {
         return;
       }
 
-      if (!(penAuth == null || auth.trim().isEmpty())) {
-        ViewUtils.showError("Please remove the penality authorization code.");
-        return;
-      }
-
       if (successful(CoolSuppliesFeatureSet10Controller.payOrder(orderNum, auth))) {
         authCodeTextField.setText("");
-        penAuthCodeTextField.setText("");
         orderNumberTextField.setText("");
-        CoolSuppliesFxmlView.getInstance().refresh();
       }
     }
 
@@ -95,7 +87,6 @@ public class PayOrderPageController {
         authCodeTextField.setText("");
         penAuthCodeTextField.setText("");
         orderNumberTextField.setText("");
-        CoolSuppliesFxmlView.getInstance().refresh();
       }
     }
 
