@@ -4,14 +4,14 @@ import java.util.List;
 import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet11Controller;
 import ca.mcgill.ecse.coolsupplies.controller.TOOrder;
 import ca.mcgill.ecse.coolsupplies.controller.TOOrderItem;
+import ca.mcgill.ecse.coolsupplies.javafx.fxml.CoolSuppliesFxmlView;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.ChoiceBox;
 
 /**
  * This class handles the View Controller for the viewing of individual orders.
@@ -36,8 +36,7 @@ public class ViewIndividualOrderPageController {
      */
     @FXML
     void showOrder(ActionEvent event) {
-        String orderNumber = orderInput.getText();
-        TOOrder order = CoolSuppliesFeatureSet11Controller.viewOrder(orderNumber);
+        TOOrder order = orderInput.getValue();
 
         orderInformationsTable.setItems(FXCollections.observableArrayList(order));
         List<TOOrderItem> orderItems = order.getOrderItems();
@@ -55,9 +54,9 @@ public class ViewIndividualOrderPageController {
      */
     @FXML
     private void initialize() {
-        selectOrderChoiceBox.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e ->{
-            selectOrderChoiceBox.setItems(ViewUtils.getOrders());
-            selectOrderChoiceBox.setValue(null);
+        orderInput.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e ->{
+            orderInput.setItems(ViewUtils.getOrders());
+            orderInput.setValue(null);
           });
         
         orderInformationsTable.getColumns().add(createOrderTableColumn("Parent", "parentEmail"));
