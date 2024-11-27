@@ -98,6 +98,7 @@ public class ItemPageController {
           callController(CoolSuppliesFeatureSet3Controller.deleteItem(item.getName())){
             ItemPriceTextField.setText("");
             ItemNameTextField.setText("");
+            CoolSuppliesFxmlView.getInstance().refresh();
           }
     }
 
