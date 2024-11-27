@@ -67,7 +67,7 @@ public class TOOrderItem
   @Override
   // line 87 "../../../../../CoolSuppliesTransferObjects.ump"
    public String toString(){
-    return "Quantity: "+ quantity +","+"Item Name: "+itemName + "Grade Bundle: "+ gradeBundleName+
+    return "Quantity: "+ quantity +","+"Item Name: "+itemName + "," +  "Grade Bundle: "+ gradeBundleName+
     ","+"Price: "+price+","+"Discount:"+discount;
   }
 
