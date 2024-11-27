@@ -39,7 +39,6 @@ public class PayOrderPageController {
     void PayForOrderClicked(ActionEvent event) {
       String orderNum = orderNumberTextField.getText();
       String auth = authCodeTextField.getText();
-      String penAuth = penAuthCodeTextField.getText();
       TOOrder order = CoolSuppliesFeatureSet11Controller.viewOrder(orderNum);
 
       if (order == null) {
@@ -49,11 +48,6 @@ public class PayOrderPageController {
 
       if (auth == null || auth.trim().isEmpty()) {
         ViewUtils.showError("Please enter a valid authorization code.");
-        return;
-      }
-
-      if (!(penAuth == null || auth.trim().isEmpty())) {
-        ViewUtils.showError("Please remove the penality authorization code.");
         return;
       }
 
