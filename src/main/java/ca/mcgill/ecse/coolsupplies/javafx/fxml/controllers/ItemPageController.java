@@ -76,7 +76,7 @@ public class ItemPageController {
     	      if (successful(CoolSuppliesFeatureSet3Controller.addItem(itemName, Integer.parseInt(itemPrice)))){
             ItemPriceTextField.setText("");
             ItemNameTextField.setText("");
-    	        CoolSuppliesFxmlView.getInstance().refresh();
+    	      CoolSuppliesFxmlView.getInstance().refresh();
     	      }
     	}
     }
