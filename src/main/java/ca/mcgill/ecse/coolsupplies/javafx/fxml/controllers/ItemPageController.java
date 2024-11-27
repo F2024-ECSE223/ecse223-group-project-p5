@@ -94,8 +94,7 @@ public class ItemPageController {
   
         else{
           callController(CoolSuppliesFeatureSet3Controller.deleteItem(item.getName()));
-            CoolSuppliesFxmlView.getInstance().refresh();
-          }
+        }
     }
 
    
