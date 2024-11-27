@@ -56,7 +56,7 @@ public class ViewIndividualOrderPageController {
     private TableColumn<TOOrder, String> parentColumn;
 
     @FXML
-    private TableColumn<TOOrder, String> penAuthCodeColumn;
+    private TableColumn<TOOrder, String> penAuthCode;
 
     @FXML
     private TableColumn<TOOrder, String> statusColumn;
@@ -82,7 +82,7 @@ public class ViewIndividualOrderPageController {
     dateColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDate().toString()));
     statusColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getStatus()));
     authCodeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAuthorizationCode()));
-    penAuthCodeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPenaltyAuthorizationCode()));
+    penAuthCode.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPenaltyAuthorizationCode()));
     levelColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getLevel()));
     parentColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getParentEmail()));
     studentColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getStudentName()));
