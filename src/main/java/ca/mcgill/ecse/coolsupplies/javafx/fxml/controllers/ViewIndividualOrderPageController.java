@@ -74,7 +74,6 @@ public class ViewIndividualOrderPageController {
         orderSummaryTable.getColumns().add(createOrderItemTableColumn("Item Price", "price"));
         orderSummaryTable.getColumns().add(createOrderItemTableColumn("Item Discount", "discount"));
         orderSummaryTable.getColumns().add(createOrderItemTableColumn("Bundle Name", "gradeBundleName"));
-        CoolSuppliesFxmlView.getInstance().registerRefreshEvent(orderInput);
     }
 
     /**

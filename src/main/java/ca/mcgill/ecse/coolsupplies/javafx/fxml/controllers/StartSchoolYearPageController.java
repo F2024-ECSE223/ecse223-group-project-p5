@@ -7,7 +7,6 @@ import javafx.scene.control.Label;
 
 import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet12Controller;
 import ca.mcgill.ecse.coolsupplies.controller.TOOrder;
-import ca.mcgill.ecse.coolsupplies.javafx.fxml.CoolSuppliesFxmlView;
 import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet11Controller;
 
 
@@ -26,17 +25,16 @@ public class StartSchoolYearPageController {
         boolean allSuccessful = true;
 
         for (TOOrder order : CoolSuppliesFeatureSet11Controller.viewAllOrders()) {
-            if (order.getStatus()== "Started" || order.getStatus() == "Paid"){
             String orderNumber = String.valueOf(order.getNumber());
             String result = CoolSuppliesFeatureSet12Controller.startSchoolYearForOrder(orderNumber);
-            CoolSuppliesFxmlView.getInstance().refresh();
+
             if (!result.isEmpty()) { // A non-empty result indicates a failure
                 allSuccessful = false;
             }
         }
-        }
 
         if (allSuccessful) {
+            startSchoolYearButton.setVisible(false);
             messageLabel.setText("The school year has started");
             messageLabel.setVisible(true);
         } else {
