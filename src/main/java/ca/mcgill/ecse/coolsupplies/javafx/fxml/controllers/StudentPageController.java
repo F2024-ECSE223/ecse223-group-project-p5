@@ -14,7 +14,7 @@ import javafx.scene.control.TextField;
 public class StudentPageController {
 
   @FXML
-  private ChoiceBox<TOStudent> selectStudentChoiceBox;
+  private ChoiceBox<TOStudent> selectStudentChoiceBox1;
 
   @FXML
   private ChoiceBox<TOGrade> studentGradeLevelChoiceBox;
@@ -27,9 +27,9 @@ public class StudentPageController {
 
   @FXML
   public void initialize(){
-    selectStudentChoiceBox.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e -> {
-      selectStudentChoiceBox.setItems(ViewUtils.getStudents());
-      selectStudentChoiceBox.setValue(null);
+    selectStudentChoiceBox1.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e -> {
+      selectStudentChoiceBox1.setItems(ViewUtils.getStudents());
+      selectStudentChoiceBox1.setValue(null);
     } );
 
     studentGradeLevelChoiceBox.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e ->{
@@ -37,7 +37,7 @@ public class StudentPageController {
       studentGradeLevelChoiceBox.setValue(null);
     });
 
-    CoolSuppliesFxmlView.getInstance().registerRefreshEvent(selectStudentChoiceBox, studentGradeLevelChoiceBox);
+    CoolSuppliesFxmlView.getInstance().registerRefreshEvent(selectStudentChoiceBox1, studentGradeLevelChoiceBox);
   }
 
  /* 
@@ -64,7 +64,7 @@ public class StudentPageController {
   */
   @FXML
   public void deleteStudentClicked(ActionEvent event) {
-    TOStudent student = selectStudentChoiceBox.getValue();
+    TOStudent student = selectStudentChoiceBox1.getValue();
     if (student==null){
       ViewUtils.showError("Please select a valid student.");
     }else{
@@ -77,7 +77,7 @@ public class StudentPageController {
   */
   @FXML
   public void updateStudentClicked(ActionEvent event) {
-    TOStudent student = selectStudentChoiceBox.getValue();
+    TOStudent student = selectStudentChoiceBox1.getValue();
     String newName = studentNameTextField.getText(); 
     TOGrade newGrade = studentGradeLevelChoiceBox.getValue();
     if (student==null){

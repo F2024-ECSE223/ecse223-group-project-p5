@@ -33,7 +33,7 @@
       <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="101.0" text="Parent:" GridPane.rowIndex="1" />
       <ChoiceBox fx:id="orderParentChoiceBox" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
       <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="99.0" text="Student:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-      <ChoiceBox fx:id="orderStudentChoiceBox" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
+      <ChoiceBox fx:id="orderStudentChoiceBoxA" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
       <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="103.0" text="Select Order:" GridPane.columnIndex="4" GridPane.rowIndex="1" />
       <ChoiceBox fx:id="selectOrderChoiceBox" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="5" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
       <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#startOrderClicked" text="Start Order" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />

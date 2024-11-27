@@ -30,7 +30,7 @@ public class OrderPageController {
   private ChoiceBox<TOParent> orderParentChoiceBox;
 
   @FXML
-  private ChoiceBox<TOStudent> orderStudentChoiceBox;
+  private ChoiceBox<TOStudent> orderStudentChoiceBoxA;
 
   @FXML
   private ChoiceBox<String> purchaseLevelChoiceBox;
@@ -48,9 +48,9 @@ public class OrderPageController {
       orderParentChoiceBox.setValue(null);
     } );
 
-    orderStudentChoiceBox.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e ->{
-      orderStudentChoiceBox.setItems(ViewUtils.getStudents());
-      orderStudentChoiceBox.setValue(null);
+    orderStudentChoiceBoxA.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e ->{
+      orderStudentChoiceBoxA.setItems(ViewUtils.getStudents());
+      orderStudentChoiceBoxA.setValue(null);
     });
 
     ObservableList<String> purchaseLevels = FXCollections.observableArrayList("Mandatory","Recommended","Optional");
@@ -62,7 +62,7 @@ public class OrderPageController {
       selectOrderChoiceBox.setValue(null);
     });
     orderDatePicker.setEditable(false);
-    CoolSuppliesFxmlView.getInstance().registerRefreshEvent(orderParentChoiceBox,selectOrderChoiceBox,selectOrderChoiceBox);
+    CoolSuppliesFxmlView.getInstance().registerRefreshEvent(orderParentChoiceBox,selectOrderChoiceBox,selectOrderChoiceBox, orderStudentChoiceBoxA);
    }
   
   /* 
@@ -88,7 +88,7 @@ public class OrderPageController {
       var date= orderDatePicker.getValue();
       String level = purchaseLevelChoiceBox.getValue();
       TOParent parent = orderParentChoiceBox.getValue();
-      TOStudent student = orderStudentChoiceBox.getValue();
+      TOStudent student = orderStudentChoiceBoxA.getValue();
       var error = "";
       if (date == null){
         error += "Invalid date";
@@ -122,7 +122,7 @@ public class OrderPageController {
   void updateOrderClicked(ActionEvent event) {
       TOOrder order = selectOrderChoiceBox.getValue();
       String newLevel = purchaseLevelChoiceBox.getValue();
-      TOStudent newStudent = orderStudentChoiceBox.getValue();
+      TOStudent newStudent = orderStudentChoiceBoxA.getValue();
       var error = "";
       if (newLevel == null){
         error += "Invalid level";
