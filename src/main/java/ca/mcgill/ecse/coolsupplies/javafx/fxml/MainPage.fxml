@@ -7,7 +7,7 @@
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TabPane prefHeight="393.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
+         <tabs>
             <Tab text="School Admin">
                <content>
                   <fx:include source="pages/UpdateAdminPage.fxml" />
@@ -29,9 +29,9 @@
                </content>
             </Tab>
             <Tab text="Bundle">
-                <content>
-                    <fx:include source="pages/BundlePage.fxml" />
-                </content>
+               <content>
+                  <fx:include source="pages/BundlePage.fxml" />
+               </content>
             </Tab>
             <Tab text="Bundle Item">
                <content>
@@ -54,9 +54,9 @@
                </content>
             </Tab>
             <Tab text="Order Item">
-                <content>
-                    <fx:include source="pages/ItemOrderPage.fxml" />
-                </content>
+               <content>
+                  <fx:include source="pages/ItemOrderPage.fxml" />
+               </content>
             </Tab>
             <Tab text="Pay Order">
                <content>
@@ -76,7 +76,8 @@
             <Tab text="View Individual Order">
                <content>
                   <fx:include source="pages/ViewIndividualOrderPage.fxml" />
-               </content></Tab>
+               </content>
+            </Tab>
             <Tab text="View All Orders">
                <content>
                   <fx:include source="pages/ViewAllOrdersPage.fxml" />
@@ -86,13 +87,23 @@
                <content>
                   <fx:include source="pages/ViewAllOrderItemsPage.fxml" />
                </content>
-          </Tab>
-            <Tab text="View All Bundles">
-                <content>
-                    <fx:include source="pages/ViewAllBundlesPage.fxml" />
-                </content>
             </Tab>
-        </tabs>
+            <Tab text="View All Bundles">
+               <content>
+                  <fx:include source="pages/ViewAllBundlesPage.fxml" />
+               </content>
+            </Tab>
+            <Tab text="View All Students">
+               <content>
+                  <fx:include source="pages/ViewStudent.fxml" />
+               </content>
+            </Tab>
+            <Tab text="View All Parents">
+               <content>
+                  <fx:include source="pages/ViewParent.fxml" />
+               </content>
+            </Tab>
+         </tabs>
       </TabPane>
    </children>
 </VBox>

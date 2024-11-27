@@ -58,6 +58,8 @@ public class ViewIndividualOrderPageController {
             orderInput.setItems(ViewUtils.getOrders());
             orderInput.setValue(null);
           });
+
+        CoolSuppliesFxmlView.getInstance().registerRefreshEvent(orderInput);
         
         orderInformationsTable.getColumns().add(createOrderTableColumn("Parent", "parentEmail"));
         orderInformationsTable.getColumns().add(createOrderTableColumn("Student", "studentName"));
