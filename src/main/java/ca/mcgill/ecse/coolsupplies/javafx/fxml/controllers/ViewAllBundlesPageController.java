@@ -28,7 +28,7 @@ public class ViewAllBundlesPageController {
             bundlesListView.setItems(FXCollections.observableList(
                     ViewUtils.getBundles().stream()
                             .map(bundle -> {
-                              String bundleInfo = bundle.toString();
+                              String bundleInfo = bundle.toString() + ", Discount: " + String.valueOf(bundle.getDiscount()) + ", GradeLevel: " + bundle.getGradeLevel();
                               String bundleItems = ViewUtils.getBundleItems(bundle.getName()).stream()
                                       .map(Object::toString)
                                       .collect(Collectors.joining("\n"));
