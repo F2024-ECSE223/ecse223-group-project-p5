@@ -15,7 +15,7 @@
       <Text layoutX="178.0" layoutY="30.0" opacity="0.6" strokeType="OUTSIDE" strokeWidth="0.0" text="Order Number" />
       <ScrollPane layoutY="85.0" prefHeight="102.0" prefWidth="680.0" vbarPolicy="NEVER">
          <content>
-            <TableView prefHeight="101.0" prefWidth="680.0">
+            <TableView fx:id="orderInformationsTable" prefHeight="101.0" prefWidth="680.0">
               <columns>
                 <TableColumn fx:id="orderNumberColumn" prefWidth="92.800048828125" text="Order Number" />
                 <TableColumn fx:id="dateColumn" prefWidth="108.0" text="Date" />
@@ -25,20 +25,20 @@
                   <TableColumn fx:id="penAuthCode" prefWidth="175.20001220703125" text="Penality Authorization Code" />
                   <TableColumn fx:id="parentColumn" prefWidth="175.20001220703125" text="Parent" />
                   <TableColumn fx:id="studentColumn" prefWidth="175.20001220703125" text="Student" />
-                  <TableColumn prefWidth="102.39990234375" text="Total Price" />
+                  <TableColumn fx:id="totalPriceColumn" prefWidth="102.39990234375" text="Total Price" />
               </columns>
             </TableView>
          </content>
       </ScrollPane>
       <ScrollPane hbarPolicy="NEVER" layoutY="187.0" prefHeight="328.0" prefWidth="680.0">
          <content>
-            <TableView prefHeight="329.0" prefWidth="680.0">
+            <TableView fx:id="orderSummaryTable" prefHeight="329.0" prefWidth="680.0">
               <columns>
-                <TableColumn prefWidth="129.60003662109375" text="Item Name" />
-                <TableColumn prefWidth="140.00001525878906" text="Quantity" />
-                  <TableColumn prefWidth="132.79998779296875" text="Price" />
-                  <TableColumn prefWidth="122.39993286132812" text="Discount" />
-                  <TableColumn prefWidth="140.800048828125" text="Bundle Name" />
+                <TableColumn fx:id="itemNameColumn" prefWidth="129.60003662109375" text="Item Name" />
+                <TableColumn fx:id="itemQuantityColumn" prefWidth="140.00001525878906" text="Quantity" />
+                  <TableColumn fx:id="itemPriceColumn" prefWidth="132.79998779296875" text="Price" />
+                  <TableColumn fx:id="itemDiscountColumn" prefWidth="122.39993286132812" text="Discount" />
+                  <TableColumn fx:id="bundleNameColumn" prefWidth="140.800048828125" text="Bundle Name" />
               </columns>
             </TableView>
          </content>
