@@ -53,9 +53,7 @@ public class PayOrderPageController {
 
       if (successful(CoolSuppliesFeatureSet10Controller.payOrder(orderNum, auth))) {
         authCodeTextField.setText("");
-        penAuthCodeTextField.setText("");
         orderNumberTextField.setText("");
-        CoolSuppliesFxmlView.getInstance().refresh();
       }
     }
 
@@ -89,7 +87,6 @@ public class PayOrderPageController {
         authCodeTextField.setText("");
         penAuthCodeTextField.setText("");
         orderNumberTextField.setText("");
-        CoolSuppliesFxmlView.getInstance().refresh();
       }
     }
 
