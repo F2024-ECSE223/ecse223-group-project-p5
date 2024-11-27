@@ -250,7 +250,7 @@ public class CoolSuppliesFeatureSet5Controller {
     } 
 
     List<TOBundleItem> bundleItems = new ArrayList<TOBundleItem>();
-    for (BundleItem bundleItem : coolSupplies.getBundleItems()) {
+    for (BundleItem bundleItem : myBundle.getBundleItems()) {
       bundleItems.add(new TOBundleItem(bundleItem.getQuantity(), bundleItem.getLevel().name(), bundleItem.getItem().getName(), bundleName));
     }
     return bundleItems;

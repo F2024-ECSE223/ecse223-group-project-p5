@@ -60,7 +60,7 @@ public class TOBundleItem
   @Override
   // line 49 "../../../../../CoolSuppliesTransferObjects.ump"
    public String toString(){
-    return "Quantity"+ quantity + ","+ "Level: "+ level +","+ "Item Name"+ itemName + ","+ "Grade Bundle Name: "+
+    return "Quantity"+ quantity + ","+ "Level: "+ level +","+ "Item Name: "+ itemName + ","+ "Grade Bundle Name: "+
     gradeBundleName;
   }
 
