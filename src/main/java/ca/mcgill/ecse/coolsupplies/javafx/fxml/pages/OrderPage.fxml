@@ -22,6 +22,7 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
       <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="105.0" text="Number:" />
@@ -36,8 +37,10 @@
       <ChoiceBox fx:id="orderStudentChoiceBoxA" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
       <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="103.0" text="Select Order:" GridPane.columnIndex="4" GridPane.rowIndex="1" />
       <ChoiceBox fx:id="selectOrderChoiceBox" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="5" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
-      <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#startOrderClicked" text="Start Order" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
-      <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateOrderClicked" text="Update Order" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
-      <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#cancelOrderClicked" text="Cancel Order" GridPane.columnIndex="5" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
+      <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#startOrderClicked" text="Start Order" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" />
+      <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateOrderClicked" text="Update Order" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" />
+      <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#cancelOrderClicked" text="Cancel Order" GridPane.columnIndex="5" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" />
+      <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#setParentClicked" text="Set Parent" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
+      <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#setOrderClicked" text="Set Order" GridPane.columnIndex="5" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
    </children>
 </GridPane>

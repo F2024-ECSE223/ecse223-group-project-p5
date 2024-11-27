@@ -8,15 +8,15 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
-
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.util.stream.Collectors;
 
-public class ViewAllOrderItemsPageController {
+public class ViewAllParentsPageController {
 
   @FXML
-  private ListView<String> ordersListView;
+  private ListView<String> parentsListView;
 
   /*
    * @author Brian Yang
@@ -24,21 +24,22 @@ public class ViewAllOrderItemsPageController {
 
   @FXML
   public void initialize(){
-    ordersListView.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e ->
-            ordersListView.setItems(FXCollections.observableList(
-                    ViewUtils.getOrders().stream()
-                            .map(order -> {
-                              String orderInfo = order.toString();
-                              String bundleItems = ViewUtils.getOrderItems(order.getNumber()).stream()
+    parentsListView.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e ->
+            parentsListView.setItems(FXCollections.observableList(
+                    ViewUtils.getParents().stream()
+                            .map(parent -> {
+                              String parentInfo = "Name: "+ parent.getName()+"," +parent.toString() + ", Phone Number: "+ parent.getPhoneNumber();
+                              String students = ViewUtils.getStudentsOfParent(parent.getEmail()).stream()
                                       .map(Object::toString)
                                       .collect(Collectors.joining("\n"));
-                              return orderInfo + ":\norderItems:" + bundleItems;
+                              return parentInfo + "\nStudents: \n" + students;
                             })
                             .toList()
             ))
     );
     //
-    CoolSuppliesFxmlView.getInstance().registerRefreshEvent(ordersListView);
+    CoolSuppliesFxmlView.getInstance().registerRefreshEvent(parentsListView);
   }
+
 
 }

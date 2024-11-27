@@ -82,4 +82,13 @@ public class CoolSuppliesFeatureSet13Controller {
     return orderItems;
   }
 
+  public static String getParentOfStudent(String studentName){
+    Student aStudent = Student.getWithName(studentName);
+    Parent parent = aStudent.getParent();
+    if (parent == null){
+      return "no parent";
+    }
+    return parent.getEmail();
+  }
+
 }
