@@ -1,9 +1,9 @@
 /*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.34.0.7242.6b8819789 modeling language!*/
+/*This code was generated using the UMPLE 1.33.0.6934.a386b0a58 modeling language!*/
 
 package ca.mcgill.ecse.coolsupplies.controller;
 
-// line 30 "../../../../../CoolSuppliesTransferObjects.ump"
+// line 42 "../../../../../CoolSuppliesTransferObjects.ump"
 public class TOBundleItem
 {
 
@@ -57,12 +57,11 @@ public class TOBundleItem
   {}
 
 
-  public String toString()
-  {
-    return super.toString() + "["+
-            "quantity" + ":" + getQuantity()+ "," +
-            "level" + ":" + getLevel()+ "," +
-            "itemName" + ":" + getItemName()+ "," +
-            "gradeBundleName" + ":" + getGradeBundleName()+ "]";
+  @Override
+  // line 49 "../../../../../CoolSuppliesTransferObjects.ump"
+   public String toString(){
+    return "Quantity"+ quantity + ","+ "Level: "+ level +","+ "Item Name: "+ itemName + ","+ "Grade Bundle Name: "+
+    gradeBundleName;
   }
+
 }

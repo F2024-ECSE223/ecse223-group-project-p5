@@ -4,13 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.print.attribute.standard.MediaSize.Other;
 import ca.mcgill.ecse.coolsupplies.application.CoolSuppliesApplication;
-import ca.mcgill.ecse.coolsupplies.model.CoolSupplies;
-import ca.mcgill.ecse.coolsupplies.model.InventoryItem;
-import ca.mcgill.ecse.coolsupplies.model.Item;
-import ca.mcgill.ecse.coolsupplies.model.Order;
-import ca.mcgill.ecse.coolsupplies.model.OrderItem;
-import ca.mcgill.ecse.coolsupplies.model.Parent;
-import ca.mcgill.ecse.coolsupplies.model.Student;
+import ca.mcgill.ecse.coolsupplies.model.*;
 import ca.mcgill.ecse.coolsupplies.model.BundleItem.PurchaseLevel;
 import ca.mcgill.ecse.coolsupplies.persistence.CoolsuppliesPersistence;
 
@@ -82,7 +76,12 @@ public static String updateOrder(String orderNumber, String purchaseLevel, Strin
     InventoryItem anitem = InventoryItem.getWithName(item);
     if (anitem == null){
       return "Item " + item + " does not exist.";
-    } 
+    }
+    if (anitem instanceof GradeBundle)
+    {
+      GradeBundle bundle = (GradeBundle) anitem;
+      if(bundle.getBundleItems().isEmpty()) return "Cannot add empty bundle";
+    }
     Order anOrder = Order.getWithNumber(Integer.parseInt(orderNumber));
     if (anOrder == null){
       return "Order " + orderNumber + " does not exist";
