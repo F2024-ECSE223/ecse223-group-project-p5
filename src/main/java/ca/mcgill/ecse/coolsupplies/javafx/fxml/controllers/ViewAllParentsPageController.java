@@ -28,11 +28,11 @@ public class ViewAllParentsPageController {
             parentsListView.setItems(FXCollections.observableList(
                     ViewUtils.getParents().stream()
                             .map(parent -> {
-                              String parentInfo = "Name:"+ parent.getName()+"," +parent.toString() + ", Phone Number: "+ parent.getPhoneNumber();
+                              String parentInfo = "Name: "+ parent.getName()+"," +parent.toString() + ", Phone Number: "+ parent.getPhoneNumber();
                               String students = ViewUtils.getStudentsOfParent(parent.getEmail()).stream()
                                       .map(Object::toString)
                                       .collect(Collectors.joining("\n"));
-                              return parentInfo + ":\n" + students;
+                              return parentInfo + "\nStudents: \n" + students;
                             })
                             .toList()
             ))

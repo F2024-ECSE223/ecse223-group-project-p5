@@ -10,6 +10,7 @@ import ca.mcgill.ecse.coolsupplies.controller.TOParent;
 import ca.mcgill.ecse.coolsupplies.controller.TOStudent;
 import ca.mcgill.ecse.coolsupplies.javafx.fxml.CoolSuppliesFxmlView;
 import static ca.mcgill.ecse.coolsupplies.javafx.fxml.controllers.ViewUtils.callController;
+import static ca.mcgill.ecse.coolsupplies.javafx.fxml.controllers.ViewUtils.getStudentsOfParent;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -49,7 +50,7 @@ public class OrderPageController {
     } );
 
     orderStudentChoiceBoxA.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e ->{
-      orderStudentChoiceBoxA.setItems(ViewUtils.getStudents());
+      orderStudentChoiceBoxA.setItems(FXCollections.emptyObservableList());
       orderStudentChoiceBoxA.setValue(null);
     });
 
@@ -135,6 +136,22 @@ public class OrderPageController {
       }else{
         callController(CoolSuppliesFeatureSet8Controller.updateOrder(Integer.toString(order.getNumber()), newLevel, newStudent.getName()));
       }
+  }
+
+  @FXML
+  void setOrderClicked(ActionEvent event) {
+    TOOrder order = selectOrderChoiceBox.getValue();
+    orderStudentChoiceBoxA.setItems(getStudentsOfParent(order.getParentEmail()));
+    orderStudentChoiceBoxA.setValue(null);
+
+  }
+
+  @FXML
+  void setParentClicked(ActionEvent event) {
+    TOParent parent = orderParentChoiceBox.getValue();
+    orderStudentChoiceBoxA.setItems(getStudentsOfParent(parent.getEmail()));
+    orderStudentChoiceBoxA.setValue(null);
+
   }
 
 }

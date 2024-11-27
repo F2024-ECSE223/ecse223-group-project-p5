@@ -32,7 +32,7 @@ public class ViewAllOrderItemsPageController {
                               String bundleItems = ViewUtils.getOrderItems(order.getNumber()).stream()
                                       .map(Object::toString)
                                       .collect(Collectors.joining("\n"));
-                              return orderInfo + ":\n" + bundleItems;
+                              return orderInfo + ":\norderItems:" + bundleItems;
                             })
                             .toList()
             ))

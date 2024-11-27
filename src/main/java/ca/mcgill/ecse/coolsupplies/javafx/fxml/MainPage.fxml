@@ -97,6 +97,11 @@
                   <fx:include source="pages/ViewParentsPage.fxml" />
                </content>
             </Tab>
+            <Tab text="View Students">
+               <content>
+                  <fx:include source="pages/ViewStudents.fxml" />
+               </content>
+            </Tab>
         </tabs>
       </TabPane>
    </children>

@@ -32,7 +32,7 @@ public class ViewAllBundlesPageController {
                               String bundleItems = ViewUtils.getBundleItems(bundle.getName()).stream()
                                       .map(Object::toString)
                                       .collect(Collectors.joining("\n"));
-                              return bundleInfo + ":\n" + bundleItems;
+                              return bundleInfo + "\nBundleItems:\n" + bundleItems;
                             })
                             .toList()
             ))
