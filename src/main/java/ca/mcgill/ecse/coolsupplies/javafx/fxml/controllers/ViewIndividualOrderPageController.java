@@ -1,17 +1,17 @@
 package ca.mcgill.ecse.coolsupplies.javafx.fxml.controllers;
 
 import java.util.List;
-import ca.mcgill.ecse.coolsupplies.controller.CoolSuppliesFeatureSet11Controller;
 import ca.mcgill.ecse.coolsupplies.controller.TOOrder;
 import ca.mcgill.ecse.coolsupplies.controller.TOOrderItem;
 import ca.mcgill.ecse.coolsupplies.javafx.fxml.CoolSuppliesFxmlView;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TableColumn;
 
 /**
  * This class handles the View Controller for the viewing of individual orders.
@@ -89,7 +89,7 @@ public class ViewIndividualOrderPageController {
      * Creates a table column in the order summary
      */
     public static TableColumn<TOOrderItem, String> createOrderItemTableColumn(String header, String propertyName) {
-        TableColumn<TOOrder, String> column = new TableColumn<>(header);
+        TableColumn<TOOrderItem, String> column = new TableColumn<>(header);
         column.setCellValueFactory(new PropertyValueFactory<>(propertyName));
         return column;
       }
