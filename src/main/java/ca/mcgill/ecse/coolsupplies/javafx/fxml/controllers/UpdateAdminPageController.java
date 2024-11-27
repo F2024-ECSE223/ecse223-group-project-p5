@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class UpdateAdminPageController {
@@ -18,21 +19,7 @@ public class UpdateAdminPageController {
     private TextField adminEmailField;
 
     @FXML
-    private TextField newPasswordField;
-
-    // @FXML
-    // public void initialize() {
-    //   newPasswordField.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e -> {
-    //     newPasswordField.clear();
-    // });
-
-    // adminEmailField.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e -> {
-    //     adminEmailField.setText("admin@cool.ca");
-    //     adminEmailField.setDisable(true);
-    // });
-
-    // CoolSuppliesFxmlView.getInstance().registerRefreshEvent(newPasswordField, adminEmailField);
-    // }
+    private PasswordField newPasswordField;
 
     @FXML
     void updateAdminPasswordClicked(ActionEvent event) {

@@ -92,6 +92,11 @@
                     <fx:include source="pages/ViewAllBundlesPage.fxml" />
                 </content>
             </Tab>
+            <Tab text="View All Parents">
+               <content>
+                  <fx:include source="pages/ViewParentsPage.fxml" />
+               </content>
+            </Tab>
         </tabs>
       </TabPane>
    </children>
