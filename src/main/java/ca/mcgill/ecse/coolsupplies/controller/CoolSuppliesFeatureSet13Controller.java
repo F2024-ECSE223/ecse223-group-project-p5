@@ -73,4 +73,22 @@ public class CoolSuppliesFeatureSet13Controller {
     return toItems;
   }
 
+  public static List<TOOrderItem> viewItemsAllOrderItems(){
+    List<TOOrderItem> orderItems= new ArrayList<TOOrderItem>();
+    List<TOOrder> orders = CoolSuppliesFeatureSet11Controller.viewAllOrders();
+    for (TOOrder aOrder:orders){
+      orderItems.addAll(aOrder.getOrderItems());
+    }
+    return orderItems;
+  }
+
+  public static String getParentOfStudent(String studentName){
+    Student aStudent = Student.getWithName(studentName);
+    Parent parent = aStudent.getParent();
+    if (parent == null){
+      return "no parent";
+    }
+    return parent.getEmail();
+  }
+
 }

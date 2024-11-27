@@ -5,7 +5,7 @@ package ca.mcgill.ecse.coolsupplies.controller;
 import java.sql.Date;
 import java.util.*;
 
-// line 43 "../../../../../CoolSuppliesTransferObjects.ump"
+// line 62 "../../../../../CoolSuppliesTransferObjects.ump"
 public class TOOrder
 {
 
@@ -168,17 +168,10 @@ public class TOOrder
   {}
 
 
-  public String toString()
-  {
-    return super.toString() + "["+
-            "parentEmail" + ":" + getParentEmail()+ "," +
-            "studentName" + ":" + getStudentName()+ "," +
-            "status" + ":" + getStatus()+ "," +
-            "number" + ":" + getNumber()+ "," +
-            "level" + ":" + getLevel()+ "," +
-            "authorizationCode" + ":" + getAuthorizationCode()+ "," +
-            "penaltyAuthorizationCode" + ":" + getPenaltyAuthorizationCode()+ "," +
-            "totalPrice" + ":" + getTotalPrice()+ "]" + System.getProperties().getProperty("line.separator") +
-            "  " + "date" + "=" + (getDate() != null ? !getDate().equals(this)  ? getDate().toString().replaceAll("  ","    ") : "this" : "null");
+  @Override
+  // line 75 "../../../../../CoolSuppliesTransferObjects.ump"
+   public String toString(){
+    return "Number: "+ number;
   }
+
 }

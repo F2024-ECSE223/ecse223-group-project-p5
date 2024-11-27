@@ -1,9 +1,9 @@
 /*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.34.0.7242.6b8819789 modeling language!*/
+/*This code was generated using the UMPLE 1.33.0.6934.a386b0a58 modeling language!*/
 
 package ca.mcgill.ecse.coolsupplies.controller;
 
-// line 38 "../../../../../CoolSuppliesTransferObjects.ump"
+// line 54 "../../../../../CoolSuppliesTransferObjects.ump"
 public class TOGrade
 {
 
@@ -36,9 +36,10 @@ public class TOGrade
   {}
 
 
-  public String toString()
-  {
-    return super.toString() + "["+
-            "level" + ":" + getLevel()+ "]";
+  @Override
+  // line 58 "../../../../../CoolSuppliesTransferObjects.ump"
+   public String toString(){
+    return "Level: "+ level;
   }
+
 }

@@ -3,7 +3,7 @@
 
 package ca.mcgill.ecse.coolsupplies.controller;
 
-// line 57 "../../../../../CoolSuppliesTransferObjects.ump"
+// line 79 "../../../../../CoolSuppliesTransferObjects.ump"
 public class TOOrderItem
 {
 
@@ -64,13 +64,11 @@ public class TOOrderItem
   {}
 
 
-  public String toString()
-  {
-    return super.toString() + "["+
-            "quantity" + ":" + getQuantity()+ "," +
-            "itemName" + ":" + getItemName()+ "," +
-            "gradeBundleName" + ":" + getGradeBundleName()+ "," +
-            "price" + ":" + getPrice()+ "," +
-            "discount" + ":" + getDiscount()+ "]";
+  @Override
+  // line 87 "../../../../../CoolSuppliesTransferObjects.ump"
+   public String toString(){
+    return "Quantity: "+ quantity +","+"Item Name: "+itemName + "," +  "Grade Bundle: "+ gradeBundleName+
+    ","+"Price: "+price+","+"Discount:"+discount;
   }
+
 }
