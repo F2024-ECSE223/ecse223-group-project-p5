@@ -28,7 +28,7 @@
       <ChoiceBox fx:id="studentGradeLevelChoiceBox" prefWidth="150.0" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" />
       <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteStudentClicked" text="Delete Student" GridPane.columnIndex="5" GridPane.rowIndex="1" />
       <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="107.0" text="Select Student:" GridPane.columnIndex="4" />
-      <ChoiceBox fx:id="selectStudentChoiceBox" prefWidth="150.0" GridPane.columnIndex="5" GridPane.hgrow="ALWAYS" />
+      <ChoiceBox fx:id="selectStudentChoiceBox1" prefWidth="150.0" GridPane.columnIndex="5" GridPane.hgrow="ALWAYS" />
       <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addStudentClicked" text="Add Student" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
       <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateStudentClicked" text="Update Student" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
    </children>

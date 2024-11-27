@@ -3,7 +3,7 @@
 
 package ca.mcgill.ecse.coolsupplies.controller;
 
-// line 11 "../../../../../CoolSuppliesTransferObjects.ump"
+// line 14 "../../../../../CoolSuppliesTransferObjects.ump"
 public class TOStudent
 {
 
@@ -43,10 +43,10 @@ public class TOStudent
   {}
 
 
-  public String toString()
-  {
-    return super.toString() + "["+
-            "name" + ":" + getName()+ "," +
-            "gradeLevel" + ":" + getGradeLevel()+ "]";
+  @Override
+  // line 19 "../../../../../CoolSuppliesTransferObjects.ump"
+   public String toString(){
+    return "Name: "+ name;
   }
+
 }
