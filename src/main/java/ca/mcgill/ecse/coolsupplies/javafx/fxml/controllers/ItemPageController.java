@@ -74,6 +74,8 @@ public class ItemPageController {
   }
     	else{
     	      if (successful(CoolSuppliesFeatureSet3Controller.addItem(itemName, Integer.parseInt(itemPrice)))){
+            ItemPriceTextField.setText("");
+            ItemNameTextField.setText("");
     	        CoolSuppliesFxmlView.getInstance().refresh();
     	      }
     	}
@@ -94,7 +96,8 @@ public class ItemPageController {
   
         else{
           callController(CoolSuppliesFeatureSet3Controller.deleteItem(item.getName())){
-            CoolSuppliesFxmlView.getInstance().refresh();
+            ItemPriceTextField.setText("");
+            ItemNameTextField.setText("");
           }
     }
 
@@ -121,6 +124,8 @@ public class ItemPageController {
     	}
     	else{
     	      if (successful(CoolSuppliesFeatureSet3Controller.updateItem(item.getName(), newNameString, Integer.parseInt(newPriceString)))){
+              ItemPriceTextField.setText("");
+              ItemNameTextField.setText("");
     	        CoolSuppliesFxmlView.getInstance().refresh();
     	      }
     	    }
