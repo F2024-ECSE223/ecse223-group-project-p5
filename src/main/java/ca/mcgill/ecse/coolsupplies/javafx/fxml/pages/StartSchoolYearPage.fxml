@@ -20,6 +20,6 @@
   <children>
     <Button fx:id="startSchoolYearButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#startSchoolYearClicked" prefHeight="83.0" prefWidth="121.0" text="Start School Year" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
     <!-- New Label for the message -->
-    <Label fx:id="messageLabel" alignment="CENTER" text="" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+    <Label fx:id="messageLabel" alignment="CENTER" text="" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
   </children>
 </GridPane>
