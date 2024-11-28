@@ -141,16 +141,20 @@ public class OrderPageController {
   @FXML
   void setOrderClicked(ActionEvent event) {
     TOOrder order = selectOrderChoiceBox.getValue();
+    if (order != null){
     orderStudentChoiceBoxA.setItems(getStudentsOfParent(order.getParentEmail()));
     orderStudentChoiceBoxA.setValue(null);
+    }
 
   }
 
   @FXML
   void setParentClicked(ActionEvent event) {
     TOParent parent = orderParentChoiceBox.getValue();
+    if (parent != null){
     orderStudentChoiceBoxA.setItems(getStudentsOfParent(parent.getEmail()));
     orderStudentChoiceBoxA.setValue(null);
+    }
 
   }
 

@@ -129,8 +129,10 @@ public class ItemBundlePageController {
     @FXML
     void setGradeBundleClicked(ActionEvent event) {
       TOGradeBundle gradeBundle = gradeBundleChoiceBox.getValue();
+      if (gradeBundle != null){
       bundleItemChoiceBox.setItems(ViewUtils.getBundleItems(gradeBundle.getName()));
       bundleItemChoiceBox.setValue(null);
+      }
     }
 
     /*

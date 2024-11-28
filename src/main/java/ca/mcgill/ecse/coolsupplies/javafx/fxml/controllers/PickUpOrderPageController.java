@@ -59,7 +59,7 @@ public class PickUpOrderPageController {
     TOOrder order = OrderChoiceBox.getValue();
     if (order == null) {
       ViewUtils.showError("Please select an order.");
-    } else if (!order.getStatus().equals("Ready")) {
+    } else if (!order.getStatus().equals("Prepared")) {
       ViewUtils.showError("This order is not ready.");
     } else {
       if (successful(

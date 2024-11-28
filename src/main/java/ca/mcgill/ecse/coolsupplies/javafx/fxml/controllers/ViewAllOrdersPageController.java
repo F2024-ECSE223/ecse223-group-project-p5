@@ -18,14 +18,12 @@ public class ViewAllOrdersPageController {
     */
     @FXML
     public void initialize(){
-      orderTable.getColumns().add(createTableColumn("Parent", "parentEmail"));
-      orderTable.getColumns().add(createTableColumn("Student", "studentName"));
       orderTable.getColumns().add(createTableColumn("Status", "status"));
       orderTable.getColumns().add(createTableColumn("id", "number"));
-      orderTable.getColumns().add(createTableColumn("Date", "date"));
+      orderTable.getColumns().add(createTableColumn("Parent", "parentEmail"));
+      orderTable.getColumns().add(createTableColumn("Student", "studentName"));
       orderTable.getColumns().add(createTableColumn("Purchase Level","level" ));
-      orderTable.getColumns().add(createTableColumn("Authorization Code", "authorizationCode"));
-      orderTable.getColumns().add(createTableColumn("Penalty Authorization Code", "penaltyAuthorizationCode"));
+      orderTable.getColumns().add(createTableColumn("Date", "date"));
       orderTable.getColumns().add(createTableColumn("Total Price", "totalPrice"));
       //
       orderTable.addEventHandler(CoolSuppliesFxmlView.REFRESH_EVENT, e -> orderTable.setItems(getOrders()));

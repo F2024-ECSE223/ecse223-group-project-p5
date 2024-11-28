@@ -98,8 +98,10 @@ public class StudentParentPageController {
     @FXML
     void setParentClicked(ActionEvent event) {
       TOParent parent = selectParentChoiceBox.getValue();
+      if (parent != null){
       selectStudentParentChoiceBox.setItems(ViewUtils.getStudentsOfParent(parent.getEmail()));
       selectStudentParentChoiceBox.setValue(null);
+      }
     }
 
     /*
