@@ -1,7 +1,7 @@
 package ca.mcgill.ecse.coolsupplies.javafx.fxml.controllers;
 import static ca.mcgill.ecse.coolsupplies.javafx.fxml.controllers.ViewUtils.successful;
-import javax.swing.table.TableColumn;
-import javax.swing.text.TableView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import static ca.mcgill.ecse.coolsupplies.javafx.fxml.controllers.ViewUtils.callController;
 
 import javafx.collections.FXCollections;
@@ -12,10 +12,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import ca.mcgill.ecse.coolsupplies.controller.*;
 import ca.mcgill.ecse.coolsupplies.javafx.fxml.CoolSuppliesFxmlView;
-<<<<<<< HEAD
+
 import ca.mcgill.ecse.coolsupplies.javafx.fxml.controllers.ViewUtils;
-=======
->>>>>>> fb60ef84a658ddea16b15b2c56cfd7cd1d613b3e
+
 import ca.mcgill.ecse.coolsupplies.controller.TOParent;
 
 public class ParentDashboardController {
