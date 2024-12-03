@@ -12,7 +12,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import ca.mcgill.ecse.coolsupplies.controller.*;
 import ca.mcgill.ecse.coolsupplies.javafx.fxml.CoolSuppliesFxmlView;
+<<<<<<< HEAD
 import ca.mcgill.ecse.coolsupplies.javafx.fxml.controllers.ViewUtils;
+=======
+>>>>>>> fb60ef84a658ddea16b15b2c56cfd7cd1d613b3e
 import ca.mcgill.ecse.coolsupplies.controller.TOParent;
 
 public class ParentDashboardController {
