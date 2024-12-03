@@ -20,7 +20,7 @@
 
 .tab {
     -fx-background-color: #007acc;
-    -fx-text-fill: white;
+    -fx-text-fill: black;
     -fx-alignment: center-left;
     -fx-padding: 5;
     
