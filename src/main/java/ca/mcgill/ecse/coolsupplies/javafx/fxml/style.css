@@ -6,31 +6,29 @@
 
 .main-tab {
     -fx-background-color: #007acc;
-    -fx-text-fill: white;
+    -fx-text-fill: white; /* Ensure white text contrasts well */
     -fx-font-weight: bold;
 }
 
 .tab-pane {
     -fx-tab-max-height: 30px;
     -fx-tab-max-width: 150px;
-    -fx-background-color: #e6f7ff;
+    -fx-background-color: #e6f7ff; /* Light blue for contrast */
     -fx-border-color: #007acc;
     -fx-border-width: 2px;
 }
 
 .tab {
     -fx-background-color: #007acc;
-    -fx-text-fill: black;
+    -fx-text-fill: white; /* Ensure white text contrasts with the blue */
     -fx-alignment: center-left;
     -fx-padding: 5;
-    
-    -fx-text-base-color: white; 
     -fx-font-weight: bold;
-    
 }
 
 .tab:selected {
-    -fx-background-color: #005999;
+    -fx-background-color: #005999; /* Darker blue for the selected tab */
+    -fx-text-fill: white;
 }
 
 .button {
@@ -42,7 +40,7 @@
 }
 
 .button:hover {
-    -fx-background-color: #005999;
+    -fx-background-color: #005999; /* Darker blue on hover */
 }
 
 .header {
@@ -53,9 +51,11 @@
 .header-title {
     -fx-font-size: 18px;
     -fx-font-weight: bold;
-    -fx-text-fill: white;
+    -fx-text-fill: white; /* White text for header title */
 }
 
-#logo {
-    -fx-effect: dropshadow(gaussian, black, 3, 0.5, 0, 1);
+.label {
+    -fx-text-fill: #003366; /* Dark blue for labels to contrast lightBlue background */
+    -fx-font-weight: bold;
+    -fx-padding: 5;
 }

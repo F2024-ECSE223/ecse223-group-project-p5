@@ -25,14 +25,21 @@
       <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" >
          <tabs>
             <!-- Dashboard Tab -->
-            <Tab text="Dashboard" styleClass="main-tab">
+            <Tab text="ParentDashboard" styleClass="main-tab">
                <content>
                   <VBox>
-                     <Label text="Welcome to the Dashboard!" />
                      <fx:include source="pages/ParentDashboardPage.fxml" />
                   </VBox>
                </content>
             </Tab>
+
+          <Tab text="StudentDashboard" styleClass="main-tab">
+               <content>
+                  <VBox>
+                     <fx:include source="pages/StudentDashboardPage.fxml" />
+                  </VBox>
+               </content>
+            </Tab>  
 
             <!-- Admin Tab -->
             <Tab text="Admin" styleClass="main-tab">
