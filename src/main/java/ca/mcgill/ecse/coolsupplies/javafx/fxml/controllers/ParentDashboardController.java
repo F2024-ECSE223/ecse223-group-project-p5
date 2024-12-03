@@ -1,5 +1,7 @@
 package ca.mcgill.ecse.coolsupplies.javafx.fxml.controllers;
 import static ca.mcgill.ecse.coolsupplies.javafx.fxml.controllers.ViewUtils.successful;
+import javax.swing.table.TableColumn;
+import javax.swing.text.TableView;
 import static ca.mcgill.ecse.coolsupplies.javafx.fxml.controllers.ViewUtils.callController;
 
 import javafx.collections.FXCollections;
@@ -10,7 +12,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import ca.mcgill.ecse.coolsupplies.controller.*;
 import ca.mcgill.ecse.coolsupplies.javafx.fxml.CoolSuppliesFxmlView;
-import ca.mcgill.ecse.coolsupplies.model.TOParent;
+import ca.mcgill.ecse.coolsupplies.javafx.fxml.controllers.ViewUtils;
+import ca.mcgill.ecse.coolsupplies.controller.TOParent;
 
 public class ParentDashboardController {
 
@@ -64,7 +67,7 @@ public class ParentDashboardController {
     private void populateFormWithParent(TOParent parent) {
         parentEmailTextField.setText(parent.getEmail());
         parentNameTextField.setText(parent.getName());
-        parentPhoneNumberTextField.setText(parent.getPhoneNumber());
+        parentPhoneNumberTextField.setText(String.valueOf(parent.getPhoneNumber()));
         parentPasswordTextField.clear();
     }
 
