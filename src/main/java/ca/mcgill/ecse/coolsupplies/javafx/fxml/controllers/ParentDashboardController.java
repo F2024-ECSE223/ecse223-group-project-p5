@@ -10,7 +10,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import ca.mcgill.ecse.coolsupplies.controller.*;
 import ca.mcgill.ecse.coolsupplies.javafx.fxml.CoolSuppliesFxmlView;
-import ca.mcgill.ecse.coolsupplies.model.TOParent;
+import ca.mcgill.ecse.coolsupplies.controller.TOParent;
 
 public class ParentDashboardController {
 
@@ -64,7 +64,7 @@ public class ParentDashboardController {
     private void populateFormWithParent(TOParent parent) {
         parentEmailTextField.setText(parent.getEmail());
         parentNameTextField.setText(parent.getName());
-        parentPhoneNumberTextField.setText(parent.getPhoneNumber());
+        parentPhoneNumberTextField.setText(String.valueOf(parent.getPhoneNumber()));
         parentPasswordTextField.clear();
     }
 
