@@ -1,9 +1,5 @@
 package ca.mcgill.ecse.coolsupplies.javafx.fxml.controllers;
 
-import static ca.mcgill.ecse.coolsupplies.javafx.fxml.controllers.ViewUtils.successful;
-import javax.swing.table.TableColumn;
-import javax.swing.text.TableView;
-import javax.swing.text.html.ListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,11 +8,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import ca.mcgill.ecse.coolsupplies.controller.*;
 import ca.mcgill.ecse.coolsupplies.javafx.fxml.CoolSuppliesFxmlView;
-import ca.mcgill.ecse.coolsupplies.model.TOParent;
-import ca.mcgill.ecse.coolsupplies.model.TOStudent;
-import ca.mcgill.ecse.coolsupplies.model.TOGrade;
+import ca.mcgill.ecse.coolsupplies.controller.TOParent;
+import ca.mcgill.ecse.coolsupplies.controller.TOStudent;
+import ca.mcgill.ecse.coolsupplies.controller.TOGrade;
 
-   public class StudentDashboardController {
+public class StudentDashboardController {
    
     @FXML
     private TableView<TOStudent> studentTable;
@@ -39,11 +35,15 @@ import ca.mcgill.ecse.coolsupplies.model.TOGrade;
     @FXML
     private ChoiceBox<TOGrade> studentGradeLevelChoiceBox;
 
+    // Declare the studentList as an ObservableList
+    private ObservableList<TOStudent> studentList;
+
     @FXML
     public void initialize() {
-        studentNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        studentGradeColumn.setCellValueFactory(new PropertyValueFactory<>("gradeLevel"));
-        studentParentColumn.setCellValueFactory(new PropertyValueFactory<>("parentName"));
+        // Set up the table columns with the correct property names from the model
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        gradeColumn.setCellValueFactory(new PropertyValueFactory<>("gradeLevel"));
+        parentColumn.setCellValueFactory(new PropertyValueFactory<>("assignedParent"));
 
         // Populate the table and choice boxes
         refreshStudentTable();
@@ -57,10 +57,9 @@ import ca.mcgill.ecse.coolsupplies.model.TOGrade;
             }
         });
     }
-    
-    
+
     private void refreshStudentTable() {
-        studentList = ViewUtils.getStudents(); // Get the updated student list
+        studentList = FXCollections.observableArrayList(ViewUtils.getStudents()); // Get the updated student list
         studentTable.setItems(studentList); // Update the table with refreshed data
     }
 
@@ -134,7 +133,6 @@ import ca.mcgill.ecse.coolsupplies.model.TOGrade;
 
         if (ViewUtils.successful(CoolSuppliesFeatureSet2Controller.deleteStudent(selectedStudent.getName()))) {
             refreshStudentTable();
-
         }
     }
 }
